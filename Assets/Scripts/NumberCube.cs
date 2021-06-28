@@ -4,27 +4,43 @@ using UnityEngine;
 
 public class NumberCube : MonoBehaviour
 {
-    [SerializeField] private float speed;
 
     private Rigidbody2D rb2d;
+    private BoxCollider2D[] bc2d;
+    private bool _readyToMerge = false;
 
-    public virtual void Awake()
+    protected virtual void Awake()
     {
         rb2d = GetComponent<Rigidbody2D>();
     }
-    public virtual void Start()
+    protected virtual void Start()
     {
-        rb2d.velocity = new Vector3(0,-speed,0);
+        rb2d.sleepMode = RigidbodySleepMode2D.NeverSleep;
+        rb2d.velocity = new Vector3(0, -GameManager.Instance.Speed, 0);
+
     }
 
-    public virtual void Update()
+    protected virtual void Update()
     {
-        if (transform.position.y < -GameManager.CamHeight + transform.localScale.y / 2)
+        if (rb2d.velocity.y == 0)
         {
-            rb2d.velocity = Vector3.zero;
-            transform.position = new Vector3(transform.position.x, -GameManager.CamHeight + transform.localScale.y / 2, transform.position.z); 
+            Invoke(nameof(ReadyToMerge),GameManager.Instance.WaitForTriggerEnterCheckTime);
         }
 
+    }
+
+    protected virtual void OnTriggerStay2D(Collider2D collision)
+    {
+        if (collision.gameObject.GetComponent<NumberCube>() && _readyToMerge == true)
+        {
+            Destroy(this.gameObject);
+            Destroy(collision.gameObject);
+        }
+    }
+
+    private void ReadyToMerge()
+    {
+        _readyToMerge = true;
     }
 
 }

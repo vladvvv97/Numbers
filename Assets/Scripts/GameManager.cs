@@ -4,28 +4,37 @@ using UnityEngine;
 
 public class GameManager : MonoBehaviour
 {
-    public static int CamHeight;
-    public static int CamWidth;
+    public static GameManager Instance;
 
-    public Camera MainCamera;
-    public GameObject OneNumberCubePrefab;
-    public GameObject TwoNumberCubePrefab;
-    public GameObject ThreeNumberCubePrefab;
+    [Header("Set In Inspector")]
+    public float WaitForTriggerEnterCheckTime;
+    public float Speed;
 
+    [Header("Sets Dynamically, DON'T TOUCH")]
+    public int CamHeight;
+    public int CamWidth;
+
+    [Header("Drag'&'Drop In Inspector")]
+    [SerializeField] private Camera MainCamera;
+    [SerializeField] private GameObject OneNumberCubePrefab;
+    [SerializeField] private GameObject TwoNumberCubePrefab;
+    [SerializeField] private GameObject ThreeNumberCubePrefab;
     [SerializeField] private GameObject[] cubeTypeChance;
-    [SerializeField] private float offset;
 
     private Transform Transform;
     private Vector3 Position;
 
     void Awake()
     {
-        CamHeight = Mathf.RoundToInt(Camera.main.orthographicSize);
-        CamWidth = Mathf.RoundToInt(CamHeight * Camera.main.aspect);
+        if (Instance == null)
+        {
+            Instance = this;
+        }
     }
     void Start()
     {
-        
+        CamHeight = Mathf.RoundToInt(Camera.main.orthographicSize);
+        CamWidth = Mathf.RoundToInt(CamHeight * Camera.main.aspect);
     }
 
     void Update()
@@ -34,14 +43,37 @@ public class GameManager : MonoBehaviour
         {
             InstantiateNumberCube();
         }
-       
+
+        // ------------------------- Control for Testing purpose --------------------------- //
+
+        if (Input.GetKeyDown(KeyCode.F1))
+        {
+            GameObject CurrentCube = Instantiate(OneNumberCubePrefab, RandomUpperBound(OneNumberCubePrefab));
+            CurrentCube.transform.DetachChildren();
+            Destroy(CurrentCube);
+        }
+        else if (Input.GetKeyDown(KeyCode.F2))
+        {
+            GameObject CurrentCube = Instantiate(TwoNumberCubePrefab, RandomUpperBound(TwoNumberCubePrefab));
+            CurrentCube.transform.DetachChildren();
+            Destroy(CurrentCube);
+        }
+        else if (Input.GetKeyDown(KeyCode.F3))
+        {
+            GameObject CurrentCube = Instantiate(ThreeNumberCubePrefab, RandomUpperBound(ThreeNumberCubePrefab));
+            CurrentCube.transform.DetachChildren();
+            Destroy(CurrentCube);
+        }
+
+        // -------------------------------------------------------------------------------- //
     }
 
     void InstantiateNumberCube()
     {
         GameObject CubeType = cubeTypeChance[Random.Range(0, cubeTypeChance.Length)];
         GameObject CurrentCube = Instantiate(CubeType, RandomUpperBound(CubeType));
-        CurrentCube.transform.parent = null;
+        CurrentCube.transform.DetachChildren();
+        Destroy(CurrentCube);
     }
 
     Transform RandomUpperBound(GameObject CubeType)

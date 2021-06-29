@@ -1,6 +1,8 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 public class GameManager : MonoBehaviour
 {
@@ -13,6 +15,9 @@ public class GameManager : MonoBehaviour
     [Header("Sets Dynamically, DON'T TOUCH")]
     public int CamHeight;
     public int CamWidth;
+    public float Offset;
+    public NumberCube[] AllCubesOnScene;
+    public bool AllCubesReadyToMerge;
 
     [Header("Drag'&'Drop In Inspector")]
     [SerializeField] private Camera MainCamera;
@@ -23,6 +28,7 @@ public class GameManager : MonoBehaviour
 
     private Transform Transform;
     private Vector3 Position;
+    
 
     void Awake()
     {
@@ -35,6 +41,7 @@ public class GameManager : MonoBehaviour
     {
         CamHeight = Mathf.RoundToInt(Camera.main.orthographicSize);
         CamWidth = Mathf.RoundToInt(CamHeight * Camera.main.aspect);
+        Offset = OneNumberCubePrefab.transform.localScale.y / 2;
     }
 
     void Update()
@@ -43,6 +50,8 @@ public class GameManager : MonoBehaviour
         {
             InstantiateNumberCube();
         }
+
+        CheckIfAllCubesReadyToMerge();
 
         // ------------------------- Control for Testing purpose --------------------------- //
 
@@ -68,7 +77,21 @@ public class GameManager : MonoBehaviour
         // -------------------------------------------------------------------------------- //
     }
 
-    void InstantiateNumberCube()
+    private void CheckIfAllCubesReadyToMerge()
+    {
+        AllCubesOnScene = FindObjectsOfType<NumberCube>();
+
+        if (Array.TrueForAll(AllCubesOnScene, element => element.ReadyToMerge == true))
+        {
+            AllCubesReadyToMerge = true;
+        }
+        else
+        {
+            AllCubesReadyToMerge = false;
+        }
+    }
+
+    private void InstantiateNumberCube()
     {
         GameObject CubeType = cubeTypeChance[Random.Range(0, cubeTypeChance.Length)];
         GameObject CurrentCube = Instantiate(CubeType, RandomUpperBound(CubeType));
@@ -76,7 +99,7 @@ public class GameManager : MonoBehaviour
         Destroy(CurrentCube);
     }
 
-    Transform RandomUpperBound(GameObject CubeType)
+    private Transform RandomUpperBound(GameObject CubeType)
     {
         Transform = this.transform;        
         int rnd = Random.Range(-CamWidth, CamWidth + 1);

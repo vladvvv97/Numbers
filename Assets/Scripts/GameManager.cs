@@ -9,25 +9,30 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     [Header("Set In Inspector")]
-    public float WaitForTriggerEnterCheckTime;
-    public float Speed;
+    public float WaitForReadyToMerge = 1f;
+    public float Speed = 3f;
+    public int[] CubeValueTypes =       new int[10] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+    public int[] CubeValueTypeChance =  new int[10] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+    public Color[] CubeColors = new Color[] { Color.red, Color.yellow, Color.green, Color.blue, Color.cyan, Color.magenta, Color.gray, Color.grey, Color.gray, Color.black };
 
     [Header("Sets Dynamically, DON'T TOUCH")]
     public int CamHeight;
     public int CamWidth;
     public float Offset;
-    public NumberCube[] AllCubesOnScene;
     public bool AllCubesReadyToMerge;
+    public NumberCube[] AllCubesOnScene;
+    
+
 
     [Header("Drag'&'Drop In Inspector")]
-    [SerializeField] private Camera MainCamera;
-    [SerializeField] private GameObject OneNumberCubePrefab;
-    [SerializeField] private GameObject TwoNumberCubePrefab;
-    [SerializeField] private GameObject ThreeNumberCubePrefab;
+    [SerializeField] private Camera mainCamera;
+    [SerializeField] private GameObject oneNumberCubePrefab;
+    [SerializeField] private GameObject twoNumberCubePrefab;
+    [SerializeField] private GameObject threeNumberCubePrefab;
     [SerializeField] private GameObject[] cubeTypeChance;
 
-    private Transform Transform;
-    private Vector3 Position;
+    private Transform _transform;
+    private Vector3 _position;
     
 
     void Awake()
@@ -36,12 +41,16 @@ public class GameManager : MonoBehaviour
         {
             Instance = this;
         }
+        else
+        {
+            Destroy(this.gameObject);
+        }
     }
     void Start()
     {
         CamHeight = Mathf.RoundToInt(Camera.main.orthographicSize);
         CamWidth = Mathf.RoundToInt(CamHeight * Camera.main.aspect);
-        Offset = OneNumberCubePrefab.transform.localScale.y / 2;
+        Offset = oneNumberCubePrefab.transform.localScale.y / 2;
     }
 
     void Update()
@@ -51,25 +60,27 @@ public class GameManager : MonoBehaviour
             InstantiateNumberCube();
         }
 
+        AllCubesOnScene = FindObjectsOfType<NumberCube>();
+
         CheckIfAllCubesReadyToMerge();
 
         // ------------------------- Control for Testing purpose --------------------------- //
 
         if (Input.GetKeyDown(KeyCode.F1))
         {
-            GameObject CurrentCube = Instantiate(OneNumberCubePrefab, RandomUpperBound(OneNumberCubePrefab));
+            GameObject CurrentCube = Instantiate(oneNumberCubePrefab, RandomUpperBound(oneNumberCubePrefab));
             CurrentCube.transform.DetachChildren();
             Destroy(CurrentCube);
         }
         else if (Input.GetKeyDown(KeyCode.F2))
         {
-            GameObject CurrentCube = Instantiate(TwoNumberCubePrefab, RandomUpperBound(TwoNumberCubePrefab));
+            GameObject CurrentCube = Instantiate(twoNumberCubePrefab, RandomUpperBound(twoNumberCubePrefab));
             CurrentCube.transform.DetachChildren();
             Destroy(CurrentCube);
         }
         else if (Input.GetKeyDown(KeyCode.F3))
         {
-            GameObject CurrentCube = Instantiate(ThreeNumberCubePrefab, RandomUpperBound(ThreeNumberCubePrefab));
+            GameObject CurrentCube = Instantiate(threeNumberCubePrefab, RandomUpperBound(threeNumberCubePrefab));
             CurrentCube.transform.DetachChildren();
             Destroy(CurrentCube);
         }
@@ -78,9 +89,7 @@ public class GameManager : MonoBehaviour
     }
 
     private void CheckIfAllCubesReadyToMerge()
-    {
-        AllCubesOnScene = FindObjectsOfType<NumberCube>();
-
+    {       
         if (Array.TrueForAll(AllCubesOnScene, element => element.ReadyToMerge == true))
         {
             AllCubesReadyToMerge = true;
@@ -101,26 +110,26 @@ public class GameManager : MonoBehaviour
 
     private Transform RandomUpperBound(GameObject CubeType)
     {
-        Transform = this.transform;        
+        _transform = this.transform;        
         int rnd = Random.Range(-CamWidth, CamWidth + 1);
 
         if (CubeType.GetComponentInChildren<OneNumberCube>())
         {
-            Position = new Vector3
+            _position = new Vector3
             ((rnd < 0 ? CubeType.transform.localScale.y / 2 + rnd : -CubeType.transform.localScale.y / 2 + rnd),
             CamHeight - CubeType.transform.localScale.y / 2,
             0);
         }
         else if (CubeType.GetComponentInChildren<TwoNumberCube>())
         {
-            Position = new Vector3
+            _position = new Vector3
             ((rnd < 0 ? CubeType.transform.localScale.y + rnd : -CubeType.transform.localScale.y + rnd),
             CamHeight - CubeType.transform.localScale.y / 2,
             0);
         }
         else if (CubeType.GetComponentInChildren<ThreeNumberCube>())
         {
-            Position = new Vector3
+            _position = new Vector3
             ((rnd < 0 ? CubeType.transform.localScale.y * 1.5f + rnd : -CubeType.transform.localScale.y * 1.5f + rnd),
              CamHeight - CubeType.transform.localScale.y / 2,
             0);
@@ -130,8 +139,9 @@ public class GameManager : MonoBehaviour
             throw new System.NotImplementedException();
         }
 
-        Transform.position = Position;
-        return Transform;
+        _transform.position = _position;
+        return _transform;
     }
+
 
 }

@@ -10,7 +10,9 @@ public class GameManager : MonoBehaviour
 
     [Header("Set In Inspector")]
     public float WaitForReadyToMerge = 1f;
+    public float DelayToDropNewCubeAfterCubesMerged = 1.5f;
     public float Speed = 3f;
+    public float DropSpeed = 10f;
     public int[] CubeValueTypes =       new int[10] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
     public int[] CubeValueTypeChance =  new int[10] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
     public Color[] CubeColors = new Color[] { Color.red, Color.yellow, Color.green, Color.blue, Color.cyan, Color.magenta, Color.gray, Color.grey, Color.gray, Color.black };
@@ -19,11 +21,13 @@ public class GameManager : MonoBehaviour
     public int CamHeight;
     public int CamWidth;
     public float Offset;
-    public bool AllCubesReadyToMerge;
+    public float _timer = 0;
+    public bool AllCubesReadyToMerge = false;
+    public bool ReadyToDropNewCube = true;
+    public Vector3 MousePosition;
     public NumberCube[] AllCubesOnScene;
+    public GameObject CurrentCube;
     
-
-
     [Header("Drag'&'Drop In Inspector")]
     [SerializeField] private Camera mainCamera;
     [SerializeField] private GameObject oneNumberCubePrefab;
@@ -34,6 +38,7 @@ public class GameManager : MonoBehaviour
     private Transform _transform;
     private Vector3 _position;
     
+    private float _initialSpeed;    
 
     void Awake()
     {
@@ -51,14 +56,27 @@ public class GameManager : MonoBehaviour
         CamHeight = Mathf.RoundToInt(Camera.main.orthographicSize);
         CamWidth = Mathf.RoundToInt(CamHeight * Camera.main.aspect);
         Offset = oneNumberCubePrefab.transform.localScale.y / 2;
+        _initialSpeed = Speed;
+        
+        InstantiateNumberCube();
     }
 
     void Update()
     {
-        if (Input.GetMouseButtonDown(0))
+        MousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
+
+        if (AllCubesReadyToMerge == true)
         {
-            InstantiateNumberCube();
+            _timer += Time.deltaTime;
+
+            if (_timer >= DelayToDropNewCubeAfterCubesMerged)
+            {
+                InstantiateNumberCube();
+                _timer = 0;
+            }
         }
+
+        
 
         AllCubesOnScene = FindObjectsOfType<NumberCube>();
 
@@ -69,43 +87,56 @@ public class GameManager : MonoBehaviour
         if (Input.GetKeyDown(KeyCode.F1))
         {
             GameObject CurrentCube = Instantiate(oneNumberCubePrefab, RandomUpperBound(oneNumberCubePrefab));
-            CurrentCube.transform.DetachChildren();
-            Destroy(CurrentCube);
         }
         else if (Input.GetKeyDown(KeyCode.F2))
         {
             GameObject CurrentCube = Instantiate(twoNumberCubePrefab, RandomUpperBound(twoNumberCubePrefab));
-            CurrentCube.transform.DetachChildren();
-            Destroy(CurrentCube);
         }
         else if (Input.GetKeyDown(KeyCode.F3))
         {
             GameObject CurrentCube = Instantiate(threeNumberCubePrefab, RandomUpperBound(threeNumberCubePrefab));
-            CurrentCube.transform.DetachChildren();
-            Destroy(CurrentCube);
         }
 
         // -------------------------------------------------------------------------------- //
     }
 
-    private void CheckIfAllCubesReadyToMerge()
-    {       
-        if (Array.TrueForAll(AllCubesOnScene, element => element.ReadyToMerge == true))
+    public void ResetSpeed()
+    {
+        Speed = _initialSpeed;
+    }
+    public void SetSpeedEqualDropSpeed()
+    {
+        Speed = DropSpeed;
+
+        if (CurrentCube)
         {
-            AllCubesReadyToMerge = true;
-        }
-        else
-        {
-            AllCubesReadyToMerge = false;
+            Rigidbody2D[] rb2d = CurrentCube.GetComponentsInChildren<Rigidbody2D>();
+
+            foreach (var item in rb2d)
+            {
+                item.velocity = new Vector2(0, -Speed);
+            }
         }
     }
-
     private void InstantiateNumberCube()
     {
         GameObject CubeType = cubeTypeChance[Random.Range(0, cubeTypeChance.Length)];
-        GameObject CurrentCube = Instantiate(CubeType, RandomUpperBound(CubeType));
-        CurrentCube.transform.DetachChildren();
-        Destroy(CurrentCube);
+        CurrentCube = Instantiate(CubeType, RandomUpperBound(CubeType));
+    }
+    private void CheckIfAllCubesReadyToMerge()
+    {
+        if (AllCubesOnScene.Length > 0)
+        {
+            if (Array.TrueForAll(AllCubesOnScene, element => element.ReadyToMerge == true))
+            {                
+                AllCubesReadyToMerge = true;
+            
+            }
+            else
+            {
+                AllCubesReadyToMerge = false;
+            }
+        }
     }
 
     private Transform RandomUpperBound(GameObject CubeType)
@@ -143,5 +174,179 @@ public class GameManager : MonoBehaviour
         return _transform;
     }
 
+    public int DropLine()
+    {
+        if (CurrentCube)
+        {
+            if (CurrentCube.GetComponentInChildren<OneNumberCube>())
+            {
+                if (MousePosition.x < -2)
+                {
+                    return 10;
+                }
+                else if (MousePosition.x >= -2 && MousePosition.x < -1)
+                {
+                    return 11;
+                }
+                else if (MousePosition.x >= -1 && MousePosition.x < 0)
+                {
+                    return 12;
+                }
+                else if (MousePosition.x >= 0 && MousePosition.x < 1)
+                {
+                    return 13;
+                }
+                else if (MousePosition.x >= 1 && MousePosition.x < 2)
+                {
+                    return 14;
+                }
+                else if (MousePosition.x >= 2)
+                {
+                    return 15;
+                }
+                else
+                {
+                    return 3228;
+                }
+            }
+            else if (CurrentCube.GetComponentInChildren<TwoNumberCube>())
+            {
+                if (MousePosition.x < -1.5)
+                {
+                    return 20;
+                }
+                else if (MousePosition.x >= -1.5 && MousePosition.x < -0.5)
+                {
+                    return 21;
+                }
+                else if (MousePosition.x >= -0.5 && MousePosition.x < 0.5)
+                {
+                    return 22;
+                }
+                else if (MousePosition.x >= 0.5 && MousePosition.x < 1.5)
+                {
+                    return 23;
+                }
+                else if (MousePosition.x >= 1.5)
+                {
+                    return 24;
+                }
+                else
+                {
+                    return 3228;
+                }
+            }
+            else if (CurrentCube.GetComponentInChildren<ThreeNumberCube>())
+            {
+                if (MousePosition.x < -1)
+                {
+                    return 30;
+                }
+                else if (MousePosition.x >= -1 && MousePosition.x < 0)
+                {
+                    return 31;
+                }
+                else if (MousePosition.x >= 0 && MousePosition.x < 1)
+                {
+                    return 32;
+                }
+                else if (MousePosition.x >= 1)
+                {
+                    return 33;
+                }
+                else
+                {
+                    return 3228;
+                }
+            }
+            else
+            {
+                return 3228;
+            }
+        }
+        else
+        {
+            return 3228;
+        }
+    }
+
+    public void CubeControll()
+    {
+        if (CurrentCube != null)
+        {
+            if (CurrentCube.GetComponentInChildren<OneNumberCube>())
+            {
+                if (DropLine() == 10)
+                {
+                    CurrentCube.transform.position = new Vector2(-2.5f, transform.position.y);
+                }
+                else if (DropLine() == 11)
+                {
+                    CurrentCube.transform.position = new Vector2(-1.5f, transform.position.y);
+                }
+                else if (DropLine() == 12)
+                {
+                    CurrentCube.transform.position = new Vector2(-0.5f, transform.position.y);
+                }
+                else if (DropLine() == 13)
+                {
+                    CurrentCube.transform.position = new Vector2(0.5f, transform.position.y);
+                }
+                else if (DropLine() == 14)
+                {
+                    CurrentCube.transform.position = new Vector2(1.5f, transform.position.y);
+                }
+                else if (DropLine() == 15)
+                {
+                    CurrentCube.transform.position = new Vector2(2.5f, transform.position.y);
+                }
+                else { return; }
+            }
+            else if (CurrentCube.GetComponentInChildren<TwoNumberCube>())
+            {
+                if (DropLine() == 20)
+                {
+                    CurrentCube.transform.position = new Vector2(-2f, transform.position.y);
+                }
+                else if (DropLine() == 21)
+                {
+                    CurrentCube.transform.position = new Vector2(-1f, transform.position.y);
+                }
+                else if (DropLine() == 22)
+                {
+                    CurrentCube.transform.position = new Vector2(0f, transform.position.y);
+                }
+                else if (DropLine() == 23)
+                {
+                    CurrentCube.transform.position = new Vector2(1f, transform.position.y);
+                }
+                else if (DropLine() == 24)
+                {
+                    CurrentCube.transform.position = new Vector2(2f, transform.position.y);
+                }
+                else { return; }
+            }
+            else if (CurrentCube.GetComponentInChildren<ThreeNumberCube>())
+            {
+                if (DropLine() == 30)
+                {
+                    CurrentCube.transform.position = new Vector2(-1.5f, transform.position.y);
+                }
+                else if (DropLine() == 31)
+                {
+                    CurrentCube.transform.position = new Vector2(-0.5f, transform.position.y);
+                }
+                else if (DropLine() == 32)
+                {
+                    CurrentCube.transform.position = new Vector2(0.5f, transform.position.y);
+                }
+                else if (DropLine() == 33)
+                {
+                    CurrentCube.transform.position = new Vector2(1.5f, transform.position.y);
+                }
+                else { return; }
+            }
+        }
+    }
 
 }

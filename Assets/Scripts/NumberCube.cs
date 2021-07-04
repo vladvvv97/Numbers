@@ -2,17 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class NumberCube : MonoBehaviour
-{
-    
-    
-
+{     
     private SpriteRenderer _sr;
     private Rigidbody2D _rb2d;
     private TextMeshPro _tmpro;
+
+    private float _initialMousePositionX;
+
     public bool ReadyToMerge { get => _readyToMerge;  private set => _readyToMerge = value; }
-   [SerializeField] private bool _readyToMerge = false;
+    private bool _readyToMerge = false;
     public int Value { get => _value; private set => _value = value; }    
     private int _value;
 
@@ -37,11 +38,13 @@ public class NumberCube : MonoBehaviour
 
     protected virtual void Update()
     {
-        if (_rb2d.velocity.y < -0.1f)
+
+
+        if (_rb2d.velocity.y < -0.01f)
         {
-            ReadyToMerge = false;
+            ReadyToMerge = false;          
         }
-       
+
     }
 
     private void OnTriggerStay2D(Collider2D collision)
@@ -49,8 +52,8 @@ public class NumberCube : MonoBehaviour
         NumberCube OtherCube = collision.gameObject.GetComponent<NumberCube>();
 
         
-        if(GameManager.Instance.AllCubesReadyToMerge)
-        {
+        if(GameManager.Instance.AllCubesReadyToMerge && GameManager.Instance._timer >= GameManager.Instance.WaitForReadyToMerge)
+        {           
             if (OtherCube && OtherCube.Value == this.Value)
             {
                 Destroy(this.gameObject);
@@ -62,23 +65,48 @@ public class NumberCube : MonoBehaviour
 
     private void OnCollisionEnter2D(Collision2D collision)
     {
-       
+        if (GameManager.Instance.CurrentCube)
+        {
+            GameManager.Instance.ResetSpeed();
+            GameManager.Instance.CurrentCube.transform.DetachChildren();
+            Destroy(GameManager.Instance.CurrentCube);
+        }
         InvokeRepeating(nameof(SetReadyToMergeToTrue), GameManager.Instance.WaitForReadyToMerge, GameManager.Instance.WaitForReadyToMerge);
         _rb2d.gravityScale = 1;
-        //_rb2d.velocity = Vector2.zero;
-        //_rb2d.gravityScale = 0.5f;
-        //_rb2d.constraints = RigidbodyConstraints2D.FreezeAll;
 
-    }
-    private void OnCollisionExit2D(Collision2D collision)
-    {
-        //ReadyToMerge = false;
-        //_rb2d.constraints = RigidbodyConstraints2D.FreezePositionX & RigidbodyConstraints2D.FreezeRotation;
         
     }
     private void SetReadyToMergeToTrue()
     {
-        ReadyToMerge = true;
+        ReadyToMerge = true;        
     }
 
+    private void OnMouseDown()
+    {
+        _initialMousePositionX = GameManager.Instance.MousePosition.x;
+    }
+
+    private void OnMouseDrag()
+    {
+        
+    }
+    private void OnMouseUp()
+    {
+
+
+        GameObject currentCube = GameManager.Instance.CurrentCube;
+        if (currentCube)
+        {
+            if (_initialMousePositionX + GameManager.Instance.MousePosition.x != _initialMousePositionX)
+            {
+                NumberCube[] cubes = currentCube.GetComponentsInChildren<NumberCube>();
+                float x1 = cubes[cubes.GetLowerBound(0)].transform.position.x;
+                float x2 = cubes[cubes.GetUpperBound(0)].transform.position.x;
+                float temp = cubes[cubes.GetLowerBound(0)].transform.position.x;
+
+                cubes[cubes.GetLowerBound(0)].transform.position = new Vector2(x2, cubes[cubes.GetLowerBound(0)].transform.position.y);
+                cubes[cubes.GetUpperBound(0)].transform.position = new Vector2(temp, cubes[cubes.GetUpperBound(0)].transform.position.y);
+            }
+        }
+    }
 }

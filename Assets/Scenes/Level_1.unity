@@ -404,18 +404,18 @@ MonoBehaviour:
   Speed: 1.5
   DropSpeed: 10
   CubeValueTypes: 0100000002000000030000000400000005000000060000000700000008000000090000000a000000
-  CubeValueTypeChance: 010000000200000003000000
-  CubeColors:
-  - {r: 1, g: 0, b: 0, a: 1}
-  - {r: 1, g: 0.92156863, b: 0.015686275, a: 1}
-  - {r: 0, g: 1, b: 0, a: 1}
-  - {r: 0, g: 0, b: 1, a: 1}
-  - {r: 0, g: 1, b: 1, a: 1}
-  - {r: 1, g: 0, b: 1, a: 1}
-  - {r: 0.63035583, g: 0, b: 1, a: 1}
-  - {r: 0.2125323, g: 0.041384835, b: 0.2830189, a: 1}
-  - {r: 0.5, g: 0.5, b: 0.5, a: 1}
-  - {r: 0, g: 0, b: 0, a: 1}
+  CubeValueTypeChance: 0100000002000000030000000400000005000000060000000700000008000000090000000a000000
+  CubeSkins:
+  - {fileID: 21300000, guid: 37665eaa32c489b418e32756dc2b7c02, type: 3}
+  - {fileID: 21300000, guid: b50cbb18d991a4d47a1bc78dc269d425, type: 3}
+  - {fileID: 21300000, guid: dbee1a7cfef4b2348b8eac602f652d0d, type: 3}
+  - {fileID: 21300000, guid: 17218d41264b18442b5acf1781746583, type: 3}
+  - {fileID: 21300000, guid: 76556886649bbca4dba5118f1c87ef9d, type: 3}
+  - {fileID: 21300000, guid: 65c9a5abf4e93b34a99b961d5935d92b, type: 3}
+  - {fileID: 21300000, guid: 7ddcabd716ecf9f41abe431e96a1f541, type: 3}
+  - {fileID: 21300000, guid: 33f162294be7a614281a11b558fe93ee, type: 3}
+  - {fileID: 21300000, guid: 1b67aff92ad7f684ea48fe392d525b34, type: 3}
+  - {fileID: 21300000, guid: 5cbf1f710cde6fa46a87770c526432a0, type: 3}
   CamHeight: 0
   CamWidth: 0
   Offset: 0

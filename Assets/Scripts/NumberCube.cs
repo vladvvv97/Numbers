@@ -33,7 +33,7 @@ public class NumberCube : MonoBehaviour
 
         _tmpro.text = Value.ToString();
 
-        _sr.color = GameManager.Instance.CubeColors[Value - 1];
+        _sr.sprite = GameManager.Instance.CubeSkins[Value - 1];
     }
 
     protected virtual void Update()

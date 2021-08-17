@@ -64,7 +64,9 @@ public class BacklightLines : MonoBehaviour
     }
     private void OnMouseUp()
     {
+        
         GameManager.Instance.SetSpeedEqualDropSpeed();
+        GameManager.Instance.ResetSpeed();
 
         foreach (var sr in _sr)
         {

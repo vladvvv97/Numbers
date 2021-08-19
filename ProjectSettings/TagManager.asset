@@ -41,3 +41,18 @@ TagManager:
   - name: Default
     uniqueID: 0
     locked: 0
+  - name: Background
+    uniqueID: 3045647701
+    locked: 0
+  - name: Background Lights
+    uniqueID: 743735537
+    locked: 0
+  - name: Cube
+    uniqueID: 290892853
+    locked: 0
+  - name: Text
+    uniqueID: 3672492953
+    locked: 0
+  - name: UI
+    uniqueID: 1902277067
+    locked: 0

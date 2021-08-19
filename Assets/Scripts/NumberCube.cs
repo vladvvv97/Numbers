@@ -56,8 +56,13 @@ public class NumberCube : MonoBehaviour
         {           
             if (OtherCube && OtherCube.Value == this.Value)
             {
+                
+                if (!GameManager.Instance.CubesToDestroy.Contains(this))
+                {
+                    GameManager.Instance.CubesToDestroy.Add(this);               
+                }
+
                 Destroy(this.gameObject);
-                Destroy(collision.gameObject);
             }
         }
 
@@ -71,10 +76,9 @@ public class NumberCube : MonoBehaviour
             GameManager.Instance.CurrentCube.transform.DetachChildren();
             Destroy(GameManager.Instance.CurrentCube);
         }
-        InvokeRepeating(nameof(SetReadyToMergeToTrue), GameManager.Instance.WaitForReadyToMerge, GameManager.Instance.WaitForReadyToMerge);
-        _rb2d.gravityScale = 1;
 
-        
+        InvokeRepeating(nameof(SetReadyToMergeToTrue), GameManager.Instance.WaitForReadyToMerge, GameManager.Instance.WaitForReadyToMerge);
+        _rb2d.gravityScale = 1;       
     }
     private void SetReadyToMergeToTrue()
     {

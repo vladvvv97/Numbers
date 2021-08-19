@@ -18,6 +18,8 @@ public class GameManager : MonoBehaviour
     public Sprite[] CubeSkins = new Sprite[10];
 
     [Header("Sets Dynamically, DON'T TOUCH")]
+    public int SCORE = 0;
+    public List<NumberCube> CubesToDestroy;
     public int CamHeight;
     public int CamWidth;
     public float Offset;
@@ -76,7 +78,10 @@ public class GameManager : MonoBehaviour
             }
         }
 
-        
+        if (CubesToDestroy.Count != 0)
+        {
+            AddScore();
+        }
 
         AllCubesOnScene = FindObjectsOfType<NumberCube>();
 
@@ -128,7 +133,7 @@ public class GameManager : MonoBehaviour
         if (AllCubesOnScene.Length > 0)
         {
             if (Array.TrueForAll(AllCubesOnScene, element => element.ReadyToMerge == true))
-            {                
+            {
                 AllCubesReadyToMerge = true;
             
             }
@@ -172,6 +177,21 @@ public class GameManager : MonoBehaviour
 
         _transform.position = _position;
         return _transform;
+    }
+
+    public void AddScore()
+    {
+        int result = 0;
+
+        for (int i = 0; i < CubesToDestroy.Count; i++)
+        {
+            result += CubesToDestroy[i].Value;
+        }
+
+        SCORE += result;
+
+        CubesToDestroy.Clear();
+
     }
 
     public int DropLine()

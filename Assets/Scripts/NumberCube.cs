@@ -85,32 +85,22 @@ public class NumberCube : MonoBehaviour
         ReadyToMerge = true;        
     }
 
-    private void OnMouseDown()
-    {
-        _initialMousePositionX = GameManager.Instance.MousePosition.x;
-    }
 
-    private void OnMouseDrag()
-    {
-        
-    }
-    private void OnMouseUp()
-    {
+    //private void OnMouseUp()
+    //{
+    //    GameObject currentCube = GameManager.Instance.CurrentCube;
+    //    if (currentCube && Mathf.Abs(this._rb2d.velocity.y) > 0.1)
+    //    {
+    //        //if (_initialMousePositionX + GameManager.Instance.MousePosition.x != _initialMousePositionX)
+    //        //{
+    //            NumberCube[] cubes = currentCube.GetComponentsInChildren<NumberCube>();
+    //            float x1 = cubes[cubes.GetLowerBound(0)].transform.position.x;
+    //            float x2 = cubes[cubes.GetUpperBound(0)].transform.position.x;
+    //            float temp = cubes[cubes.GetLowerBound(0)].transform.position.x;
 
-
-        GameObject currentCube = GameManager.Instance.CurrentCube;
-        if (currentCube)
-        {
-            if (_initialMousePositionX + GameManager.Instance.MousePosition.x != _initialMousePositionX)
-            {
-                NumberCube[] cubes = currentCube.GetComponentsInChildren<NumberCube>();
-                float x1 = cubes[cubes.GetLowerBound(0)].transform.position.x;
-                float x2 = cubes[cubes.GetUpperBound(0)].transform.position.x;
-                float temp = cubes[cubes.GetLowerBound(0)].transform.position.x;
-
-                cubes[cubes.GetLowerBound(0)].transform.position = new Vector2(x2, cubes[cubes.GetLowerBound(0)].transform.position.y);
-                cubes[cubes.GetUpperBound(0)].transform.position = new Vector2(temp, cubes[cubes.GetUpperBound(0)].transform.position.y);
-            }
-        }
-    }
+    //            cubes[cubes.GetLowerBound(0)].transform.position = new Vector2(x2, cubes[cubes.GetLowerBound(0)].transform.position.y);
+    //            cubes[cubes.GetUpperBound(0)].transform.position = new Vector2(temp, cubes[cubes.GetUpperBound(0)].transform.position.y);
+    //        //}
+    //    }
+    //}
 }

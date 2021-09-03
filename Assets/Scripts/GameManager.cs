@@ -13,6 +13,7 @@ public class GameManager : MonoBehaviour
     public float DelayToDropNewCubeAfterCubesMerged = 1.5f;
     public float Speed = 3f;
     public float DropSpeed = 10f;
+    public float _visibleTimeOfBacklights = 0.25f;
     public int[] CubeValueTypes =       new int[10] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
     public int[] CubeValueTypeChance =  new int[10] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
     public Sprite[] CubeSkins = new Sprite[10];
@@ -75,6 +76,7 @@ public class GameManager : MonoBehaviour
             {
                 InstantiateNumberCube();
                 _timer = 0;
+                
             }
         }
 
@@ -226,7 +228,7 @@ public class GameManager : MonoBehaviour
                 }
                 else
                 {
-                    return 3228;
+                    return 404;
                 }
             }
             else if (CurrentCube.GetComponentInChildren<TwoNumberCube>())
@@ -253,7 +255,7 @@ public class GameManager : MonoBehaviour
                 }
                 else
                 {
-                    return 3228;
+                    return 404;
                 }
             }
             else if (CurrentCube.GetComponentInChildren<ThreeNumberCube>())
@@ -276,17 +278,17 @@ public class GameManager : MonoBehaviour
                 }
                 else
                 {
-                    return 3228;
+                    return 404;
                 }
             }
             else
             {
-                return 3228;
+                return 404;
             }
         }
         else
         {
-            return 3228;
+            return 404;
         }
     }
 

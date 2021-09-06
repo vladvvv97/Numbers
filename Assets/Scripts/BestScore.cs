@@ -2,26 +2,27 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using TMPro;
 
 public class BestScore : MonoBehaviour
 {
-    private Text _scoreTxt;
+    private TextMeshProUGUI _scoreTxt;
 
     void Awake()
     {
-        _scoreTxt = this.GetComponent<Text>();
+        _scoreTxt = this.GetComponent<TextMeshProUGUI>();
     }
 
     void Start()
     {
         if (PlayerPrefs.HasKey("BestScore"))
         {
-            _scoreTxt.text = "Best Score: " + PlayerPrefs.GetInt("BestScore");
+            _scoreTxt.text = ($"{PlayerPrefs.GetInt("BestScore")}");
         }
         else
         {
-            PlayerPrefs.SetInt("BestScore", GameManager.Instance.SCORE);
-            _scoreTxt.text = "Best Score: " + GameManager.Instance.SCORE;
+            PlayerPrefs.SetInt("BestScore", 0);
+            _scoreTxt.text = ($"{PlayerPrefs.GetInt("BestScore")}");
         }
     }
 
@@ -31,7 +32,7 @@ public class BestScore : MonoBehaviour
         {
             PlayerPrefs.SetInt("BestScore", GameManager.Instance.SCORE);
             PlayerPrefs.Save();
-            _scoreTxt.text = "Best Score: " + GameManager.Instance.SCORE;
+            _scoreTxt.text = ($"{PlayerPrefs.GetInt("BestScore")}");
         }
     }
 }

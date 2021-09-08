@@ -95,7 +95,7 @@ public class TouchController : MonoBehaviour
     {
             GameObject currentCube = GameManager.Instance.CurrentCube;
 
-            if (currentCube /*&& Mathf.Abs(this._rb2d.velocity.y) > 0.1*/)
+            if (currentCube && !currentCube.gameObject.GetComponentInChildren<ThreeNumberCube>())
             {
                 NumberCube[] cubes = currentCube.GetComponentsInChildren<NumberCube>();
                 float x1 = cubes[cubes.GetLowerBound(0)].transform.position.x;
@@ -105,7 +105,21 @@ public class TouchController : MonoBehaviour
                 cubes[cubes.GetLowerBound(0)].transform.position = new Vector2(x2, cubes[cubes.GetLowerBound(0)].transform.position.y);
                 cubes[cubes.GetUpperBound(0)].transform.position = new Vector2(temp, cubes[cubes.GetUpperBound(0)].transform.position.y);
             }
+            else if (currentCube && currentCube.gameObject.GetComponentInChildren<ThreeNumberCube>())
+            {
+                NumberCube[] cubes = currentCube.GetComponentsInChildren<NumberCube>();
+                float x0 = cubes[0].transform.position.x;
+                float x1 = cubes[1].transform.position.x;
+                float x2 = cubes[2].transform.position.x;
 
+                cubes[0].transform.position = new Vector2(x1, cubes[0].transform.position.y);
+                cubes[1].transform.position = new Vector2(x2, cubes[1].transform.position.y);
+                cubes[2].transform.position = new Vector2(x0, cubes[2].transform.position.y);
+            }
+            else
+            {
+                return;
+            }
     }
     public void ResetSwipe()
     {

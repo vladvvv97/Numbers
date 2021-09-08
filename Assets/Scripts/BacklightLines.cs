@@ -9,20 +9,13 @@ public class BacklightLines : MonoBehaviour
     
     void Awake()
     {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(this.gameObject);
-        }
         _sr = this.GetComponentsInChildren<SpriteRenderer>();
     }
     void Start()
     {
         foreach (var sr in _sr)
         {
+            sr.sprite = SkinsSystem.Instance.Backlights[PlayerPrefs.GetInt("BacklightIndex")];
             sr.enabled = false;
         }
        
@@ -30,17 +23,6 @@ public class BacklightLines : MonoBehaviour
 
     public void EnableBacklights()
     {
-        //_endTapPosition = GameManager.Instance.MousePosition;
-        //_deltaPosition = _endTapPosition - _startTapPosition;
-        //if (_deltaPosition.magnitude > deadZone)
-        //{
-        //    _isSwiping = true;
-        //}
-        //else
-        //{
-        //    _isSwiping = false;
-        //}
-
             foreach (var sr in _sr)
             {
                 sr.enabled = false;
@@ -70,12 +52,10 @@ public class BacklightLines : MonoBehaviour
             }
 
             GameManager.Instance.CubeControll();
-
             GameManager.Instance.SetSpeedEqualDropSpeed();
             GameManager.Instance.ResetSpeed();
 
-            Invoke(nameof(DisableBacklights), GameManager.Instance._visibleTimeOfBacklights);
-              
+            Invoke(nameof(DisableBacklights), GameManager.Instance._visibleTimeOfBacklights);              
     }
     private void DisableBacklights()
     {

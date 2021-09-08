@@ -33,18 +33,29 @@ public class NumberCube : MonoBehaviour
 
         _tmpro.text = Value.ToString();
 
-        _sr.sprite = GameManager.Instance.CubeSkins[Value - 1];
+        switch (PlayerPrefs.GetInt("CubeIndex"))
+        {
+            case 0:
+                _sr.sprite = SkinsSystem.Instance.Cubes1[Value - 1];
+                break;
+            case 1:
+                _sr.sprite = SkinsSystem.Instance.Cubes2[Value - 1];
+                break;
+            case 2:
+                _sr.sprite = SkinsSystem.Instance.Cubes3[Value - 1];
+                break;
+            case 3:
+                _sr.sprite = SkinsSystem.Instance.Cubes4[Value - 1];
+                break;
+        }
     }
 
     protected virtual void Update()
     {
-
-
         if (_rb2d.velocity.y < -0.01f)
         {
             ReadyToMerge = false;          
         }
-
     }
 
     private void OnTriggerStay2D(Collider2D collision)

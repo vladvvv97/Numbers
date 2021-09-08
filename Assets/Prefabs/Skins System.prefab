@@ -1,0 +1,88 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!1 &5331038973629522400
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5331038973629522406}
+  - component: {fileID: 5331038973629522407}
+  m_Layer: 0
+  m_Name: Skins System
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5331038973629522406
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5331038973629522400}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &5331038973629522407
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5331038973629522400}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 787d6252acb95414b859b8222de09342, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Cubes1:
+  - {fileID: 21300000, guid: 09f9aff49b2761342b98eab404faea76, type: 3}
+  - {fileID: 21300000, guid: ed871c768a0ffcb439de0e9e5a762b8a, type: 3}
+  - {fileID: 21300000, guid: 30ada12153330a54fb5a95c483ed37f4, type: 3}
+  - {fileID: 21300000, guid: 5e3865a5d01056a46b83e1d28df57fed, type: 3}
+  - {fileID: 21300000, guid: 7198d2b0ea4614e4bbef0e3ba5427b3c, type: 3}
+  - {fileID: 21300000, guid: d9fdd1a979994a441b5c453f5c6ca2b1, type: 3}
+  - {fileID: 21300000, guid: 7478971d8fa01ad43821a88af619b398, type: 3}
+  - {fileID: 21300000, guid: 1c53be07edc0fd74cadf119fda863164, type: 3}
+  - {fileID: 21300000, guid: f63e61ad08aab274ca6c840b20ce582b, type: 3}
+  - {fileID: 21300000, guid: 50145e73bb7f3264082e4b75872cd7db, type: 3}
+  Cubes2:
+  - {fileID: 21300000, guid: 37665eaa32c489b418e32756dc2b7c02, type: 3}
+  - {fileID: 21300000, guid: b50cbb18d991a4d47a1bc78dc269d425, type: 3}
+  - {fileID: 21300000, guid: dbee1a7cfef4b2348b8eac602f652d0d, type: 3}
+  - {fileID: 21300000, guid: 17218d41264b18442b5acf1781746583, type: 3}
+  - {fileID: 21300000, guid: 76556886649bbca4dba5118f1c87ef9d, type: 3}
+  - {fileID: 21300000, guid: 65c9a5abf4e93b34a99b961d5935d92b, type: 3}
+  - {fileID: 21300000, guid: 7ddcabd716ecf9f41abe431e96a1f541, type: 3}
+  - {fileID: 21300000, guid: 33f162294be7a614281a11b558fe93ee, type: 3}
+  - {fileID: 21300000, guid: 1b67aff92ad7f684ea48fe392d525b34, type: 3}
+  - {fileID: 21300000, guid: 5cbf1f710cde6fa46a87770c526432a0, type: 3}
+  Cubes3:
+  - {fileID: 21300000, guid: 57ed29a98e773d8418672eb2542507f8, type: 3}
+  - {fileID: 21300000, guid: 1be99c1480fb9184199d23c95d1d0c3e, type: 3}
+  - {fileID: 21300000, guid: a97e9b27f92a55e4a81214cd84bb14d1, type: 3}
+  - {fileID: 21300000, guid: 015a31e7ff6642147a91a88085520ea4, type: 3}
+  - {fileID: 21300000, guid: c901365a22bac264799202286ac8f767, type: 3}
+  - {fileID: 21300000, guid: b306eed0b9cd8a948b482130cdf7f950, type: 3}
+  - {fileID: 21300000, guid: f2e0b5ec4cbc3a2418ac38831a736ffc, type: 3}
+  - {fileID: 21300000, guid: e8b719d9f6eb75f47a6703dd9b0a6f3b, type: 3}
+  - {fileID: 21300000, guid: 0dd7ceb5d064ea3439c57f84f993bcc5, type: 3}
+  - {fileID: 21300000, guid: 99e819cc35cef88418920c57264731c7, type: 3}
+  Cubes4: []
+  InGameBackgrounds:
+  - {fileID: 21300000, guid: 3706cf3fa5a30cf40b53711d2e6d64a9, type: 3}
+  - {fileID: 21300000, guid: ef66056a25a950241bd3a127d6a67c33, type: 3}
+  - {fileID: 21300000, guid: 3ece303d7905fe241a93c2877107db2d, type: 3}
+  - {fileID: 21300000, guid: a028628c05763c74880fe71592cf8388, type: 3}
+  Backlights:
+  - {fileID: 21300000, guid: 4fa9ec6acfcd0e04ca810c2fbf5671f4, type: 3}
+  - {fileID: 21300000, guid: 97fb4b0cb7bb1fb4886b29265a144b50, type: 3}
+  - {fileID: 21300000, guid: 7cf65f50f204934499fcde8487c8a9e0, type: 3}

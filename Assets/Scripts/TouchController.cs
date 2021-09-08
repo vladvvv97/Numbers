@@ -4,10 +4,7 @@ using UnityEngine;
 
 public class TouchController : MonoBehaviour
 {
-    public static TouchController Instance;
-
-    public static bool isSwiping;
-
+    [SerializeField] private BacklightLines backlightLines;
     [SerializeField] private float deadZone = 0.5f;
 
     private Vector2 _startTapPosition;
@@ -15,19 +12,11 @@ public class TouchController : MonoBehaviour
     private Vector2 _deltaPosition;
 
     private bool _isMobile;
-    [SerializeField] private bool _alreadyTouch = false;
+    private bool _alreadyTouch = false;
+    private bool _isSwiping;
 
-    void Awake()
-    {
-        if (Instance == null)
-        {
-            Instance = this;
-        }
-        else
-        {
-            Destroy(this.gameObject);
-        }
-    }
+    public bool IsSwiping { get => _isSwiping; set => _isSwiping = value; }
+
     void Start()
     {
         _isMobile = Application.isMobilePlatform;
@@ -47,14 +36,14 @@ public class TouchController : MonoBehaviour
                 _deltaPosition = _endTapPosition - _startTapPosition;
                 if (_deltaPosition.magnitude > deadZone)
                 {
-                    isSwiping = true;
+                    IsSwiping = true;
                     Swipe();
                 }
                 else
                 {
-                    isSwiping = false;
+                    IsSwiping = false;
                     _alreadyTouch = true;
-                    BacklightLines.Instance.EnableBacklights();
+                    backlightLines.EnableBacklights();
                 }
             }
         }
@@ -73,14 +62,14 @@ public class TouchController : MonoBehaviour
 
                     if (_deltaPosition.magnitude > deadZone)
                     {
-                        isSwiping = true;
+                        IsSwiping = true;
                         Swipe();
                     }
                     else
                     {
-                        isSwiping = false;
+                        IsSwiping = false;
                         _alreadyTouch = true;
-                        BacklightLines.Instance.EnableBacklights();
+                        backlightLines.EnableBacklights();
                     }
                 }
             }
@@ -123,12 +112,11 @@ public class TouchController : MonoBehaviour
     }
     public void ResetSwipe()
     {
-        isSwiping = false;
+        IsSwiping = false;
 
         _startTapPosition = Vector2.zero;
         _endTapPosition = Vector2.zero;
         _deltaPosition = Vector2.zero;
-
     }
     
 }

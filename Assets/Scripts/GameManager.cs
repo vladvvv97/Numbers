@@ -14,9 +14,7 @@ public class GameManager : MonoBehaviour
     public float Speed = 3f;
     public float DropSpeed = 10f;
     public float _visibleTimeOfBacklights = 0.25f;
-    public int[] CubeValueTypes =       new int[10] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
     public int[] CubeValueTypeChance =  new int[10] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
-    public Sprite[] CubeSkins = new Sprite[10];
 
     [Header("Sets Dynamically, DON'T TOUCH")]
     public int SCORE = 0;
@@ -62,6 +60,7 @@ public class GameManager : MonoBehaviour
         _initialSpeed = Speed;
         
         InstantiateNumberCube();
+
     }
 
     void Update()

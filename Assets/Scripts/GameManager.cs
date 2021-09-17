@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     public int[] CubeValueTypeChance =  new int[10] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
     [Header("Sets Dynamically, DON'T TOUCH")]
-    public int SCORE = 0;
+    public int Score = 0;
     public List<NumberCube> CubesToDestroy;
     public int CamHeight;
     public int CamWidth;
@@ -189,7 +189,7 @@ public class GameManager : MonoBehaviour
             result += CubesToDestroy[i].Value;
         }
 
-        SCORE += result;
+        Score += result;
 
         CubesToDestroy.Clear();
 

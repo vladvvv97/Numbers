@@ -4,7 +4,7 @@ using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 
-public class CurrentScore : MonoBehaviour
+public class ShowCurrentScore : MonoBehaviour
 {
     private TextMeshProUGUI _scoreTxt;
 
@@ -14,6 +14,6 @@ public class CurrentScore : MonoBehaviour
     }
     void Update()
     {
-        _scoreTxt.text = ($"{GameManager.Instance.SCORE}");
+        _scoreTxt.text = ($"{GameManager.Instance.Score}");
     }
 }

@@ -15,7 +15,7 @@ public class BacklightLines : MonoBehaviour
     {
         foreach (var sr in _sr)
         {
-            sr.sprite = SkinsSystem.Instance.Backlights[PlayerPrefs.GetInt("BacklightIndex")];
+            sr.sprite = SkinsManager.Instance.Backlights[PlayerPrefs.GetInt("BacklightIndex")];
             sr.enabled = false;
         }
        

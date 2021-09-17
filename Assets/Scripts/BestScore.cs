@@ -28,9 +28,9 @@ public class BestScore : MonoBehaviour
 
     void Update()
     {
-        if (GameManager.Instance.SCORE > PlayerPrefs.GetInt("BestScore"))
+        if (GameManager.Instance.Score > PlayerPrefs.GetInt("BestScore"))
         {
-            PlayerPrefs.SetInt("BestScore", GameManager.Instance.SCORE);
+            PlayerPrefs.SetInt("BestScore", GameManager.Instance.Score);
             PlayerPrefs.Save();
             _scoreTxt.text = ($"{PlayerPrefs.GetInt("BestScore")}");
         }

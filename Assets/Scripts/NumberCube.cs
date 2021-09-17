@@ -32,20 +32,25 @@ public class NumberCube : MonoBehaviour
         Value = GameManager.Instance.CubeValueTypeChance[Random.Range(0, GameManager.Instance.CubeValueTypeChance.Length)];
 
         _tmpro.text = Value.ToString();
+        if (Value == 10)
+        {
+            _tmpro.enableAutoSizing = false;
+            _tmpro.fontSize = 6f;
+        }
 
         switch (PlayerPrefs.GetInt("CubeIndex"))
         {
             case 0:
-                _sr.sprite = SkinsSystem.Instance.Cubes1[Value - 1];
+                _sr.sprite = SkinsManager.Instance.Cubes1[Value - 1];
                 break;
             case 1:
-                _sr.sprite = SkinsSystem.Instance.Cubes2[Value - 1];
+                _sr.sprite = SkinsManager.Instance.Cubes2[Value - 1];
                 break;
             case 2:
-                _sr.sprite = SkinsSystem.Instance.Cubes3[Value - 1];
+                _sr.sprite = SkinsManager.Instance.Cubes3[Value - 1];
                 break;
             case 3:
-                _sr.sprite = SkinsSystem.Instance.Cubes4[Value - 1];
+                _sr.sprite = SkinsManager.Instance.Cubes4[Value - 1];
                 break;
         }
     }

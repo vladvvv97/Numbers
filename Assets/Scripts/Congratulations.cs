@@ -14,6 +14,6 @@ public class Congratulations : MonoBehaviour
 
     public void SetTextFieldForCongratulations()
     {
-        _scoreTxt.text = ("Congratulations!\nYour Score: " + ($"{GameManager.Instance.SCORE}"));
+        _scoreTxt.text = ("Congratulations!\nYour Score: " + ($"{GameManager.Instance.Score}"));
     }
 }

@@ -18,6 +18,5 @@ public class InGameBackgroundSkinsCheckmark : MonoBehaviour
         {
             _image.enabled = false;
         }
-
     }
 }

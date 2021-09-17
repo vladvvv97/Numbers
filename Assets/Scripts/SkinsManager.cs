@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class SkinsSystem : MonoBehaviour
+public class SkinsManager : MonoBehaviour
 {
-    public static SkinsSystem Instance;
+    public static SkinsManager Instance;
     public Sprite[] Cubes1;
     public Sprite[] Cubes2;
     public Sprite[] Cubes3;
@@ -14,7 +14,7 @@ public class SkinsSystem : MonoBehaviour
     
     void Awake()
     {
-        if (SkinsSystem.Instance == null)
+        if (SkinsManager.Instance == null)
         {
             Instance = this;
         }
@@ -33,21 +33,15 @@ public class SkinsSystem : MonoBehaviour
             PlayerPrefs.SetInt("BacklightIndex", 0);
         }
 
-        else { return; }
-
         if (!PlayerPrefs.HasKey("InGameBackgroundIndex"))
         {
             PlayerPrefs.SetInt("InGameBackgroundIndex", 0);
         }
 
-        else { return; }
-
         if (!PlayerPrefs.HasKey("CubeIndex"))
         {
             PlayerPrefs.SetInt("CubeIndex", 0);
         }
-
-        else { return; }
     }
 
     public void SetBacklightIndex(int index)

@@ -14,6 +14,6 @@ public class InGameBackground : MonoBehaviour
 
     private void Start()
     {
-        _image.sprite = SkinsSystem.Instance.InGameBackgrounds[PlayerPrefs.GetInt("InGameBackgroundIndex")];
+        _image.sprite = SkinsManager.Instance.InGameBackgrounds[PlayerPrefs.GetInt("InGameBackgroundIndex")];
     }
 }

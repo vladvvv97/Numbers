@@ -18,6 +18,7 @@ public class LockedElementActivateManager : MonoBehaviour
     [SerializeField] private AnimationClip NotEnoughCurrencyAlertAnimationClip;
 
     private Image[] _images;
+    private Button _button;
     private string _index;
 
     void Awake()
@@ -35,6 +36,7 @@ public class LockedElementActivateManager : MonoBehaviour
     {
         _images = gameObject.GetComponentsInChildren<Image>();
         _index = new string(this.gameObject.name.Where(Char.IsDigit).ToArray());
+        _button = gameObject.GetComponentInChildren<Button>();
 
         if (PlayerPrefs.GetInt(gameObject.name) == (int)ePlayerPrefs.False)
         {
@@ -142,8 +144,13 @@ public class LockedElementActivateManager : MonoBehaviour
     IEnumerator ActivateNotEnoughCurrencyScreen()
     {
         notEnoughCurrencyAlert.gameObject.SetActive(true);
+        _button.interactable = false;
+
         yield return new WaitForSeconds(NotEnoughCurrencyAlertAnimationClip.length);
+
         notEnoughCurrencyAlert.gameObject.SetActive(false);
+        _button.interactable = true;
+
         yield return null;
     }
 

@@ -71,7 +71,7 @@ public class CurrencyManager : MonoBehaviour
     }
     public void AmountRewardCalculation(int rewardMult = 1)
     {
-        for (int i = 0; i <= 10; i++)
+        for (int i = 1; i <= 10; i++)
         {
             if (GameManager.Instance.Score >= scoreGap * i)
             {

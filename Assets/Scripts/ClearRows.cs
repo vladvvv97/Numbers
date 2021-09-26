@@ -8,7 +8,7 @@ public class ClearRows : MonoBehaviour
     //public GameObject[] array;
     public void ClearNumberOfRows(int quantity)
     {       
-        float UpperBorderY = 4.5f;
+        float UpperBorderY = 5f;
 
         if (GameManager.Instance.AllCubesOnScene.Length > 0)
         {

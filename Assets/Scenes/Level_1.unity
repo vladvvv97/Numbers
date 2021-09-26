@@ -1652,7 +1652,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: +99999
+  m_text: +9999
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -2150,18 +2150,6 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 595326488}
-        m_TargetAssemblyTypeName: Continue, Assembly-CSharp
-        m_MethodName: ContinueGame
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
       - m_Target: {fileID: 595326490}
         m_TargetAssemblyTypeName: ClearRows, Assembly-CSharp
         m_MethodName: ClearNumberOfRows
@@ -2174,10 +2162,34 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 595326489}
+        m_TargetAssemblyTypeName: UnityEngine.UI.Selectable, UnityEngine.UI
+        m_MethodName: set_interactable
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1281153272}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
         m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 595326488}
+        m_TargetAssemblyTypeName: Continue, Assembly-CSharp
+        m_MethodName: ContinueGame
+        m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
@@ -2375,6 +2387,30 @@ MonoBehaviour:
       - m_Target: {fileID: 1620451490148533507, guid: 2c6e8e5d14e41574ab6131d7b85b6e08, type: 3}
         m_TargetAssemblyTypeName: CurrencyManager, Assembly-CSharp
         m_MethodName: AddMultipliedRewardAfterGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 574388564, guid: 2caffbf7a6439ea49a2efcca18943696, type: 3}
+        m_TargetAssemblyTypeName: TaskConditionManager, Assembly-CSharp
+        m_MethodName: InvokeOnGameFinishedAction
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 574388564, guid: 2caffbf7a6439ea49a2efcca18943696, type: 3}
+        m_TargetAssemblyTypeName: TaskConditionManager, Assembly-CSharp
+        m_MethodName: InvokeOnScoreChangedAction
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -3192,6 +3228,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 893752497}
+        m_TargetAssemblyTypeName: UnityEngine.UI.Selectable, UnityEngine.UI
+        m_MethodName: set_interactable
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 1281153272}
         m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
         m_MethodName: SetActive
@@ -3781,10 +3829,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WaitForReadyToMerge: 1
   DelayToDropNewCubeAfterCubesMerged: 1.5
-  Speed: 0.5
+  Speed: 0.75
   DropSpeed: 20
   _visibleTimeOfBacklights: 0.25
-  CubeValueTypeChance: 0100000001000000010000000100000002000000020000000200000002000000030000000300000003000000030000000400000004000000040000000500000005000000050000000600000006000000060000000700000007000000080000000800000009000000090000000a000000
+  CubeValueTypeChance: 0100000001000000010000000100000001000000020000000200000002000000020000000200000003000000030000000300000003000000030000000400000004000000040000000400000005000000050000000500000005000000060000000600000006000000060000000700000007000000080000000800000009000000090000000a000000
   Score: 0
   CubesToDestroy: []
   CamHeight: 0
@@ -3805,6 +3853,7 @@ MonoBehaviour:
   - {fileID: 2894800031981913652, guid: 42d802605bc82fc46b42e320c0bc15f3, type: 3}
   - {fileID: 2894800031981913652, guid: 42d802605bc82fc46b42e320c0bc15f3, type: 3}
   - {fileID: 2894800031981913652, guid: 42d802605bc82fc46b42e320c0bc15f3, type: 3}
+  - {fileID: 2894800031981913652, guid: 95bd0ac4457d4674bbd65e69b7e12e21, type: 3}
   - {fileID: 2894800031981913652, guid: 95bd0ac4457d4674bbd65e69b7e12e21, type: 3}
   - {fileID: 2894800031981913652, guid: 95bd0ac4457d4674bbd65e69b7e12e21, type: 3}
 --- !u!4 &1066278272
@@ -7349,6 +7398,42 @@ MonoBehaviour:
       - m_Target: {fileID: 1620451490148533507, guid: 2c6e8e5d14e41574ab6131d7b85b6e08, type: 3}
         m_TargetAssemblyTypeName: CurrencyManager, Assembly-CSharp
         m_MethodName: AddRewardAfterGame
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 574388564, guid: 2caffbf7a6439ea49a2efcca18943696, type: 3}
+        m_TargetAssemblyTypeName: TaskConditionManager, Assembly-CSharp
+        m_MethodName: InvokeOnGameFinishedAction
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 574388564, guid: 2caffbf7a6439ea49a2efcca18943696, type: 3}
+        m_TargetAssemblyTypeName: TaskConditionManager, Assembly-CSharp
+        m_MethodName: InvokeOnScoreChangedAction
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2136773129}
+        m_TargetAssemblyTypeName: Menu, Assembly-CSharp
+        m_MethodName: LoadMainMenuScene
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

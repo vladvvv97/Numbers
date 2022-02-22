@@ -9,5 +9,6 @@ public class Continue : MonoBehaviour
     {
         gameOverZone.AlreadyChecked = false;
         Time.timeScale = 1;
+        GameManager.Instance.IsPaused = false;
     }
 }

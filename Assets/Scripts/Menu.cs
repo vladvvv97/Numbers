@@ -7,6 +7,7 @@ public class Menu : MonoBehaviour
 {
     public void LoadMainMenuScene()
     {
+        GameManager.Instance.IsPaused = false;
         Time.timeScale = 1;
         PlayerPrefs.Save();
         SceneManager.LoadScene("Main_Menu");

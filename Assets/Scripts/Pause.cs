@@ -8,4 +8,9 @@ public class Pause : MonoBehaviour
     {
         Time.timeScale = 0;
     }
+
+    public void PauseGameWithoutTimeScale()
+    {
+        GameManager.Instance.IsPaused = true;
+    }
 }

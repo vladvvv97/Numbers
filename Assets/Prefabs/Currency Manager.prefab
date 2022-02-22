@@ -48,3 +48,5 @@ MonoBehaviour:
   diamondsBaseAddedValue: 1
   rewardMultiplier: 3
   scoreGap: 100
+  notEnoughCurrencyAlert: {fileID: 1197258412292314405, guid: 2c5d9ddffd67ce74aa9f907268b01b31, type: 3}
+  NotEnoughCurrencyAlertAnimationClip: {fileID: 7400000, guid: edce8efcbd7438c468169dc702f74c51, type: 2}

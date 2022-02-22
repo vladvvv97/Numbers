@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using TMPro;
 using UnityEngine.Events;
 using UnityEngine.SceneManagement;
@@ -17,7 +18,9 @@ public class CurrencyManager : MonoBehaviour
     [SerializeField] private int diamondsBaseAddedValue;
     [SerializeField] private int rewardMultiplier;
     [SerializeField] private int scoreGap;                   // Интервал счета, после которого награда будет увеличиваться 
-                                                             
+    [SerializeField] private GameObject notEnoughCurrencyAlert;
+    [SerializeField] private AnimationClip NotEnoughCurrencyAlertAnimationClip;
+
     private int _coinsToAdd;
     private int _diamondsToAdd;
 
@@ -51,6 +54,7 @@ public class CurrencyManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("Diamonds", 0);
         }
+
     }
 
     public void AddCoins(int value)
@@ -115,6 +119,7 @@ public class CurrencyManager : MonoBehaviour
         }
         else
         {
+            StartCoroutine(ActivateNotEnoughCurrencyScreen());
             Debug.Log("Not enough coins to buy");
         }
         
@@ -128,6 +133,7 @@ public class CurrencyManager : MonoBehaviour
         }
         else
         {
+            StartCoroutine(ActivateNotEnoughCurrencyScreen());
             Debug.Log("Not enough diamonds to buy");
         }        
     }
@@ -139,7 +145,8 @@ public class CurrencyManager : MonoBehaviour
             return true;
         }
         else
-        {            
+        {
+            StartCoroutine(ActivateNotEnoughCurrencyScreen());
             Debug.Log("Not enough coins to buy");
             return false;
         }
@@ -153,8 +160,19 @@ public class CurrencyManager : MonoBehaviour
         }
         else
         {
+            StartCoroutine(ActivateNotEnoughCurrencyScreen());
             Debug.Log("Not enough diamonds to buy");
             return false;
         }
+    }
+    IEnumerator ActivateNotEnoughCurrencyScreen()
+    {
+        notEnoughCurrencyAlert.gameObject.SetActive(true);
+
+        yield return new WaitForSeconds(NotEnoughCurrencyAlertAnimationClip.length);
+
+        notEnoughCurrencyAlert.gameObject.SetActive(false);
+
+        yield return null;
     }
 }

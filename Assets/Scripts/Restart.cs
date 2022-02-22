@@ -9,6 +9,7 @@ public class Restart : MonoBehaviour
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
         Time.timeScale = 1;
+        GameManager.Instance.IsPaused = false;
     }
     
 }

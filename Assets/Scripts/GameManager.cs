@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
     public Vector3 MousePosition;
     public NumberCube[] AllCubesOnScene;
     public GameObject CurrentCube;
+    public bool IsPaused = false;
     
     [Header("Drag'&'Drop In Inspector")]
     [SerializeField] private Camera mainCamera;
@@ -67,7 +68,7 @@ public class GameManager : MonoBehaviour
     {
         MousePosition = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
-        if (AllCubesReadyToMerge == true)
+        if (AllCubesReadyToMerge == true && IsPaused == false) // LAST CHANGES
         {
             _timer += Time.deltaTime;
 

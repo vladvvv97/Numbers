@@ -14,6 +14,6 @@ public class ShowClearRowsCost : MonoBehaviour
     }
     void Start()
     {
-        _costTMP.text = CurrencyManager.Instance.ClearRowsCost.ToString();
+        _costTMP.text = /* "-" + */ CurrencyManager.Instance.ClearRowsCost.ToString();
     }
 }

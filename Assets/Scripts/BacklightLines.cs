@@ -53,7 +53,6 @@ public class BacklightLines : MonoBehaviour
 
             GameManager.Instance.CubeControll();
             GameManager.Instance.SetSpeedEqualDropSpeed();
-            GameManager.Instance.ResetSpeed();
 
             Invoke(nameof(DisableBacklights), GameManager.Instance._visibleTimeOfBacklights);              
     }

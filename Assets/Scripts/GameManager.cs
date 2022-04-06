@@ -9,26 +9,26 @@ public class GameManager : MonoBehaviour
     public static GameManager Instance;
 
     [Header("Set In Inspector")]
-    public float WaitForReadyToMerge = 1f;
-    public float DelayToDropNewCubeAfterCubesMerged = 1.5f;
-    public float Speed = 3f;
-    public float DropSpeed = 10f;
-    public float _visibleTimeOfBacklights = 0.25f;
+    public float WaitForReadyToMerge;
+    public float DelayToDropNewCubeAfterCubesMerged;
+    public float Speed;
+    public float DropSpeed;
+    public float _visibleTimeOfBacklights;
     public int[] CubeValueTypeChance =  new int[10] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
     [Header("Sets Dynamically, DON'T TOUCH")]
-    public int Score = 0;
-    public List<NumberCube> CubesToDestroy;
-    public int CamHeight;
-    public int CamWidth;
-    public float Offset;
-    public float _timer = 0;
-    public bool AllCubesReadyToMerge = false;
-    public bool ReadyToDropNewCube = true;
-    public Vector3 MousePosition;
-    public NumberCube[] AllCubesOnScene;
-    public GameObject CurrentCube;
-    public bool IsPaused = false;
+    [HideInInspector]public int Score = 0;
+    [HideInInspector] public List<NumberCube> CubesToDestroy;
+    [HideInInspector] public int CamHeight;
+    [HideInInspector] public int CamWidth;
+    [HideInInspector] public float Offset;
+    [HideInInspector] public float _timer = 0;
+    [HideInInspector] public bool AllCubesReadyToMerge = false;
+    [HideInInspector] public bool ReadyToDropNewCube = true;
+    [HideInInspector] public Vector3 MousePosition;
+    [HideInInspector] public NumberCube[] AllCubesOnScene;
+    [HideInInspector] public GameObject CurrentCube;
+    [HideInInspector] public bool IsPaused = false;
     
     [Header("Drag'&'Drop In Inspector")]
     [SerializeField] private Camera mainCamera;
@@ -107,21 +107,15 @@ public class GameManager : MonoBehaviour
         // -------------------------------------------------------------------------------- //
     }
 
-    public void ResetSpeed()
-    {
-        Speed = _initialSpeed;
-    }
     public void SetSpeedEqualDropSpeed()
     {
-        Speed = DropSpeed;
-
         if (CurrentCube)
         {
             Rigidbody2D[] rb2d = CurrentCube.GetComponentsInChildren<Rigidbody2D>();
 
             foreach (var item in rb2d)
             {
-                item.velocity = new Vector2(0, -Speed);
+                item.velocity = new Vector2(0, -DropSpeed);
             }
         }
     }

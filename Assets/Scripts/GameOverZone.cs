@@ -15,7 +15,14 @@ public class GameOverZone : MonoBehaviour
     void OnTriggerStay2D(Collider2D collision)
     {
         NumberCube EnteredCube = collision.gameObject.GetComponent<NumberCube>();
-            if (EnteredCube && EnteredCube.ReadyToMerge == true && AlreadyChecked == false)
+            if 
+            (
+            EnteredCube 
+            && EnteredCube.ReadyToMerge                                  == true 
+            && AlreadyChecked                                            == false 
+            && GameManager.Instance.AllCubesReadyToMerge                 == true
+            && GameManager.Instance._timer > GameManager.Instance.WaitForReadyToMerge
+            )
             {
                 OnStayingInGameOverZone?.Invoke();
                 AlreadyChecked = true;

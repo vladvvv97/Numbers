@@ -88,7 +88,7 @@ public class NumberCube : MonoBehaviour
     {
         if (GameManager.Instance.CurrentCube)
         {
-            GameManager.Instance.ResetSpeed();
+            GameManager.Instance.SetSpeedEqualDropSpeed();
             GameManager.Instance.CurrentCube.transform.DetachChildren();
             Destroy(GameManager.Instance.CurrentCube);
         }
@@ -101,22 +101,4 @@ public class NumberCube : MonoBehaviour
         ReadyToMerge = true;        
     }
 
-
-    //private void OnMouseUp()
-    //{
-    //    GameObject currentCube = GameManager.Instance.CurrentCube;
-    //    if (currentCube && Mathf.Abs(this._rb2d.velocity.y) > 0.1)
-    //    {
-    //        //if (_initialMousePositionX + GameManager.Instance.MousePosition.x != _initialMousePositionX)
-    //        //{
-    //            NumberCube[] cubes = currentCube.GetComponentsInChildren<NumberCube>();
-    //            float x1 = cubes[cubes.GetLowerBound(0)].transform.position.x;
-    //            float x2 = cubes[cubes.GetUpperBound(0)].transform.position.x;
-    //            float temp = cubes[cubes.GetLowerBound(0)].transform.position.x;
-
-    //            cubes[cubes.GetLowerBound(0)].transform.position = new Vector2(x2, cubes[cubes.GetLowerBound(0)].transform.position.y);
-    //            cubes[cubes.GetUpperBound(0)].transform.position = new Vector2(temp, cubes[cubes.GetUpperBound(0)].transform.position.y);
-    //        //}
-    //    }
-    //}
 }

@@ -2807,6 +2807,18 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 8715196270538499952, guid: 0977ac7a9987c2444b99a1a9d988586f, type: 3}
+        m_TargetAssemblyTypeName: AchievementConditionManager, Assembly-CSharp
+        m_MethodName: InvokeOnTopScoreChangedAction
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
       - m_Target: {fileID: 696009910}
         m_TargetAssemblyTypeName: Menu, Assembly-CSharp
         m_MethodName: LoadMainMenuScene
@@ -8350,6 +8362,18 @@ MonoBehaviour:
       - m_Target: {fileID: 574388564, guid: 2caffbf7a6439ea49a2efcca18943696, type: 3}
         m_TargetAssemblyTypeName: TaskConditionManager, Assembly-CSharp
         m_MethodName: InvokeOnScoreChangedAction
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 8715196270538499952, guid: 0977ac7a9987c2444b99a1a9d988586f, type: 3}
+        m_TargetAssemblyTypeName: AchievementConditionManager, Assembly-CSharp
+        m_MethodName: InvokeOnTopScoreChangedAction
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}

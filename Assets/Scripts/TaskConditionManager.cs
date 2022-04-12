@@ -6,6 +6,7 @@ using UnityEngine;
 public class TaskConditionManager : MonoBehaviour
 {
     public static TaskConditionManager Instance;
+    //-------------------------------------------------------------------------------------------------------------------------------------------------------//
     public int CurrentProgressValue(int index) // GetInt
     {
         return PlayerPrefs.GetInt(eNumSystem.ePlayerPrefsTaskProgress.CurrentProgressValue.ToString() + index.ToString());
@@ -14,6 +15,7 @@ public class TaskConditionManager : MonoBehaviour
     {
         PlayerPrefs.SetInt(eNumSystem.ePlayerPrefsTaskProgress.CurrentProgressValue.ToString() + index.ToString(), value);
     }
+    //-------------------------------------------------------------------------------------------------------------------------------------------------------//
     public int EndingProgressValue(int index) // GetInt
     {
         return PlayerPrefs.GetInt(eNumSystem.ePlayerPrefsTaskProgress.EndingProgressValue.ToString() + index.ToString());      
@@ -22,7 +24,16 @@ public class TaskConditionManager : MonoBehaviour
     {
         PlayerPrefs.SetInt(eNumSystem.ePlayerPrefsTaskProgress.EndingProgressValue.ToString() + index.ToString(), value);
     }
-
+    //-------------------------------------------------------------------------------------------------------------------------------------------------------//
+    public bool isTaskRewardTaken(int index) // GetInt
+    {
+        return PlayerPrefs.GetInt(eNumSystem.ePlayerPrefsTaskStatus.isTaskRewardTaken.ToString() + index.ToString()) == 0 ? false : true;
+    }
+    public void isTaskRewardTaken(int index, bool value) // SetInt
+    {
+        PlayerPrefs.SetInt(eNumSystem.ePlayerPrefsTaskStatus.isTaskRewardTaken.ToString() + index.ToString(), value == false ? 0 : 1);
+    }
+    //-------------------------------------------------------------------------------------------------------------------------------------------------------//
     public bool isTask1Completed // Login 
     {
         get => PlayerPrefs.GetInt(eNumSystem.ePlayerPrefsTaskStatus.isTask1Completed.ToString()) == 0 ? false : true;
@@ -43,14 +54,12 @@ public class TaskConditionManager : MonoBehaviour
         get => PlayerPrefs.GetInt(eNumSystem.ePlayerPrefsTaskStatus.isTask4Completed.ToString()) == 0 ? false : true;
         set => PlayerPrefs.SetInt(eNumSystem.ePlayerPrefsTaskStatus.isTask4Completed.ToString(), value == false ? 0 : 1);
     }
-
-    [SerializeField] private int Task3ScoreConditionValue;
-
+    //-------------------------------------------------------------------------------------------------------------------------------------------------------//
     public Action<int> OnLogin;         // Task 1 progress update
     public Action<int> OnGameFinished;  // Task 2 progress update
     public Action<int> OnScoreChanged;  // Task 3 progress update
     public Action<int> OnVideoWatched;  // Task 4 progress update
-
+    //-------------------------------------------------------------------------------------------------------------------------------------------------------//
     public int LoginCount          // Task 1 condition count
     {
         get => PlayerPrefs.GetInt(eNumSystem.ePlayerPrefsTaskConditions.LoginCount.ToString());
@@ -71,6 +80,7 @@ public class TaskConditionManager : MonoBehaviour
         get => PlayerPrefs.GetInt(eNumSystem.ePlayerPrefsTaskConditions.VideoWatchCount.ToString());
         set => PlayerPrefs.SetInt(eNumSystem.ePlayerPrefsTaskConditions.VideoWatchCount.ToString(), value);
     }
+    //-------------------------------------------------------------------------------------------------------------------------------------------------------//
     void Awake()
     {
         if (Instance == null) { Instance = this; }
@@ -110,7 +120,7 @@ public class TaskConditionManager : MonoBehaviour
                 break;
 
             case 3:
-                ScoreCount += GameManager.Instance.Score >= 1000 ? 1 : 0;
+                ScoreCount = GameManager.Instance.Score >= 1000 ? 1 : 0;
                 CurrentProgressValue(index, ScoreCount);
                 break;
 
@@ -190,17 +200,21 @@ public class TaskConditionManager : MonoBehaviour
     }
     public void ResetAllCompleteProgress()
     {
-                isTask1Completed = false;
-                CurrentProgressValue(1, 0);
+        isTask1Completed = false;
+        isTaskRewardTaken(1, false);
+        CurrentProgressValue(1, 0);
 
-                isTask2Completed = false;
-                CurrentProgressValue(2, 0);
+        isTask2Completed = false;
+        isTaskRewardTaken(2, false);
+        CurrentProgressValue(2, 0);
 
-                isTask3Completed = false;
-                CurrentProgressValue(3, 0);
+        isTask3Completed = false;
+        isTaskRewardTaken(3, false);
+        CurrentProgressValue(3, 0);
 
-                isTask4Completed = false;
-                CurrentProgressValue(4, 0);
+        isTask4Completed = false;
+        isTaskRewardTaken(4, false);
+        CurrentProgressValue(4, 0);       
     }
 
     public bool IsTaskCompleted(int index)
@@ -226,7 +240,11 @@ public class TaskConditionManager : MonoBehaviour
 
     public int NumberOfCompletedTasks() // NEED TO UPDATE WHEN INCREASE NUMBER OF TASKS
     {
-        int result = (isTask1Completed ? 1 : 0) + (isTask2Completed ? 1 : 0) + (isTask3Completed ? 1 : 0) + (isTask4Completed ? 1 : 0);
+        int result = 
+            (isTask1Completed && !isTaskRewardTaken(1) ? 1 : 0) + 
+            (isTask2Completed && !isTaskRewardTaken(2) ? 1 : 0) + 
+            (isTask3Completed && !isTaskRewardTaken(3) ? 1 : 0) + 
+            (isTask4Completed && !isTaskRewardTaken(4) ? 1 : 0);
         return result;
     }
 

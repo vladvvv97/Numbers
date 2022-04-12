@@ -18,11 +18,6 @@ public class ShowAlertForDailyTasks : MonoBehaviour
         ShowAlert();
         Subscribe();
     }
-
-    private void OnEnable()
-    {
-        
-    }
     private void OnDisable()
     {
         Unsubscribe();

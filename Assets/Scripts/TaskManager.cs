@@ -86,10 +86,7 @@ public class TaskManager : MonoBehaviour
                 return;
         }
     }
-    void Start()
-    {
 
-    }
 
     void Update()
     {
@@ -153,6 +150,7 @@ public class TaskManager : MonoBehaviour
         MakeTaskCompleted();
         AddReward();
         TaskConditionManager.Instance.ResetCompleteProgress(rewardIndex);
+        TaskConditionManager.Instance.isTaskRewardTaken(rewardIndex, true);
         OnGetReward?.Invoke();
     }
     private void SaveData()

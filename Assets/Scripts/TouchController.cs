@@ -83,7 +83,7 @@ public class TouchController : MonoBehaviour
     public void Swipe()
     {
             GameObject currentCube = GameManager.Instance.CurrentCube;
-
+            AchievementConditionManager.Instance.InvokeOnSwipeAction();
             if (currentCube && !currentCube.gameObject.GetComponentInChildren<ThreeNumberCube>())
             {
                 NumberCube[] cubes = currentCube.GetComponentsInChildren<NumberCube>();

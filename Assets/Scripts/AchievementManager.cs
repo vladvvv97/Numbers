@@ -28,6 +28,9 @@ public class AchievementManager : MonoBehaviour
     [SerializeField] private TextMeshProUGUI claimText;
     [SerializeField] private Image claimCheckmark;
 
+    [Header("Drag&Drop in Inspector from apropriate skin game object")]
+    [SerializeField] private TextMeshProUGUI skinCostValueText;
+
     public static Action OnGetAchievementReward;
 
     void Awake()
@@ -144,8 +147,12 @@ public class AchievementManager : MonoBehaviour
         claimButton.interactable = false;
         claimCheckmark.gameObject.SetActive(true);
         claimText.gameObject.SetActive(false);
+
         achievementConditionSlider.value = 1;
         achievementConditionProgressText.text = achievementConditionProgressCompleteText;
+
+        skinCostValueText.text = achievementConditionProgressCompleteText;
+        skinCostValueText.color = Color.green;
     }
 
     public void MakeAchievementUncompleted()
@@ -168,17 +175,21 @@ public class AchievementManager : MonoBehaviour
 
     public void AddReward()
     {
-        if (rewardType == eNumSystem.eCurrencyType.Coin)
+        switch (rewardType)
         {
-            CurrencyManager.Instance.AddCoins(rewardValue);
-        }
-        else if(rewardType == eNumSystem.eCurrencyType.Diamond)
-        {
-            CurrencyManager.Instance.AddDiamonds(rewardValue);
-        }
-        else
-        {
-            return;
+            case eNumSystem.eCurrencyType.Coin:
+                CurrencyManager.Instance.AddCoins(rewardValue);
+                break;
+
+            case eNumSystem.eCurrencyType.Diamond:
+                CurrencyManager.Instance.AddDiamonds(rewardValue);
+                break;
+
+            case eNumSystem.eCurrencyType.Skin:              
+                break;
+
+            default:
+                break;
         }
     }
 }

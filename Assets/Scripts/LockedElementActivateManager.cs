@@ -8,14 +8,15 @@ using System.Linq;
 
 public class LockedElementActivateManager : MonoBehaviour
 {
-    enum eSkinType {Cube, InGameBackground, MainMenuBackground, Backlight}
-    enum ePlayerPrefs {False, True}
+    private enum eSkinType {Cube, InGameBackground, MainMenuBackground, Backlight}
+    private enum ePlayerPrefs {False, True}
 
     [SerializeField] private eSkinType type;
     [SerializeField] private TextMeshProUGUI costValue;
     [SerializeField] private GameObject notEnoughCurrencyAlert;
     [SerializeField] private Image[] checkmarks;
-    [SerializeField] private AnimationClip NotEnoughCurrencyAlertAnimationClip;
+    [SerializeField] private AnimationClip notEnoughCurrencyAlertAnimationClip;
+    [SerializeField] [Range(0, 4)] private int achievementIndex;
 
     private Image[] _images;
     private Button _button;
@@ -108,6 +109,33 @@ public class LockedElementActivateManager : MonoBehaviour
         }
     }
 
+    public void ActivateSkinForAchievement()
+    {
+        if (PlayerPrefs.GetInt(gameObject.name) == (int)ePlayerPrefs.False)
+        {
+            if (AchievementConditionManager.Instance.isAchievementRewardTaken(achievementIndex) == true)
+            {
+                PlayerPrefs.SetInt((gameObject.name), (int)ePlayerPrefs.True);
+                SetIndex();             
+                ChangeColor(Color.white);
+                SetCheckmark();
+            }
+            else
+            {
+                StartCoroutine(ActivateNotEnoughCurrencyScreen());
+            }
+        }
+        else if (PlayerPrefs.GetInt(gameObject.name) == (int)ePlayerPrefs.True)
+        {
+            SetIndex();
+            SetCheckmark();
+        }
+        else
+        {
+            return;
+        }
+    }
+
     public void SetIndex()
     {
         switch(type)
@@ -140,13 +168,25 @@ public class LockedElementActivateManager : MonoBehaviour
             }
         }
     }
+    public void PreUnlockAchievement()
+    {
+        foreach (var element in _images)
+        {
+            if (element.GetComponent<ColorChangeable>())
+            {
+                element.color = Color.white;
+            }
+        }
+
+        costValue.color = Color.green;
+    }
 
     IEnumerator ActivateNotEnoughCurrencyScreen()
     {
         notEnoughCurrencyAlert.gameObject.SetActive(true);
         _button.interactable = false;
 
-        yield return new WaitForSeconds(NotEnoughCurrencyAlertAnimationClip.length);
+        yield return new WaitForSeconds(notEnoughCurrencyAlertAnimationClip.length);
 
         notEnoughCurrencyAlert.gameObject.SetActive(false);
         _button.interactable = true;

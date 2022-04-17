@@ -27,6 +27,7 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -66,6 +67,17 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 1b67aff92ad7f684ea48fe392d525b34, type: 3}
   - {fileID: 21300000, guid: 5cbf1f710cde6fa46a87770c526432a0, type: 3}
   Cubes3:
+  - {fileID: 21300000, guid: edbdd8ca88d157b40acea1a407a68342, type: 3}
+  - {fileID: 21300000, guid: cb7d5db33e4413c4e939f1a3021e978a, type: 3}
+  - {fileID: 21300000, guid: 22070a969cee43a4f832e5ac7ebb2375, type: 3}
+  - {fileID: 21300000, guid: c67e5cee9cf2f4c4b80c78c1486bf887, type: 3}
+  - {fileID: 21300000, guid: 2b1c6d20a7a097a45b2cab8e98ec9a28, type: 3}
+  - {fileID: 21300000, guid: 40161b32a229a1048a14422799667321, type: 3}
+  - {fileID: 21300000, guid: b8a6bb16585fc474088ffb750522e7bc, type: 3}
+  - {fileID: 21300000, guid: bdbbc6b5e020f7c488fa78d23d436bc8, type: 3}
+  - {fileID: 21300000, guid: 66eb353eb4a0b634a9fe2fde693b4e7b, type: 3}
+  - {fileID: 21300000, guid: 9b435d35d7c31e64b8971feb32db0ba9, type: 3}
+  Cubes4:
   - {fileID: 21300000, guid: 57ed29a98e773d8418672eb2542507f8, type: 3}
   - {fileID: 21300000, guid: 1be99c1480fb9184199d23c95d1d0c3e, type: 3}
   - {fileID: 21300000, guid: a97e9b27f92a55e4a81214cd84bb14d1, type: 3}
@@ -76,13 +88,13 @@ MonoBehaviour:
   - {fileID: 21300000, guid: e8b719d9f6eb75f47a6703dd9b0a6f3b, type: 3}
   - {fileID: 21300000, guid: 0dd7ceb5d064ea3439c57f84f993bcc5, type: 3}
   - {fileID: 21300000, guid: 99e819cc35cef88418920c57264731c7, type: 3}
-  Cubes4: []
   InGameBackgrounds:
   - {fileID: 21300000, guid: 3706cf3fa5a30cf40b53711d2e6d64a9, type: 3}
   - {fileID: 21300000, guid: ef66056a25a950241bd3a127d6a67c33, type: 3}
   - {fileID: 21300000, guid: 3ece303d7905fe241a93c2877107db2d, type: 3}
   - {fileID: 21300000, guid: a028628c05763c74880fe71592cf8388, type: 3}
   Backlights:
-  - {fileID: 21300000, guid: 4fa9ec6acfcd0e04ca810c2fbf5671f4, type: 3}
-  - {fileID: 21300000, guid: 97fb4b0cb7bb1fb4886b29265a144b50, type: 3}
-  - {fileID: 21300000, guid: 7cf65f50f204934499fcde8487c8a9e0, type: 3}
+  - {fileID: 21300000, guid: 21c313e4677e9694cb5a9d680447972b, type: 3}
+  - {fileID: 21300000, guid: 95113397ce2821d40a72654c11fcb3de, type: 3}
+  - {fileID: 21300000, guid: ed1ecf79863b68f4383941dfd89ecde3, type: 3}
+  - {fileID: 21300000, guid: 3bada9e2039417a42964be18cc131500, type: 3}

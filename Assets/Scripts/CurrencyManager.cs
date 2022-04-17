@@ -18,8 +18,17 @@ public class CurrencyManager : MonoBehaviour
     [SerializeField] private int diamondsBaseAddedValue;
     [SerializeField] private int rewardMultiplier;
     [SerializeField] private int scoreGap;                   // Интервал счета, после которого награда будет увеличиваться 
+
     [SerializeField] private GameObject notEnoughCurrencyAlert;
     [SerializeField] private AnimationClip NotEnoughCurrencyAlertAnimationClip;
+
+    [SerializeField] private GameObject coinsChangeEffect;
+    [SerializeField] private TextMeshProUGUI coinsChangeEffectTMP;
+    [SerializeField] private AnimationClip coinsChangeEffectAnimationClip;
+
+    [SerializeField] private GameObject diamondsChangeEffect;
+    [SerializeField] private TextMeshProUGUI diamondsChangeEffectTMP;
+    [SerializeField] private AnimationClip diamondsChangeEffectAnimationClip;
 
     private int _coinsToAdd;
     private int _diamondsToAdd;
@@ -61,12 +70,14 @@ public class CurrencyManager : MonoBehaviour
     {
         PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") + value);
         CurrencyManager.Instance.OnCurrencyChange?.Invoke();
+        CurrencyManager.Instance.StartCoroutine(ActivateCoinsChangeEffect(true, value));
     }
 
     public void AddDiamonds(int value)
     {
         PlayerPrefs.SetInt("Diamonds", PlayerPrefs.GetInt("Diamonds") + value);
         CurrencyManager.Instance.OnCurrencyChange?.Invoke();
+        CurrencyManager.Instance.StartCoroutine(ActivateDiamondsChangeEffect(true, value));
     }
     public void ResetRewardToAdd()
     {
@@ -92,6 +103,9 @@ public class CurrencyManager : MonoBehaviour
         PlayerPrefs.SetInt("Diamonds", PlayerPrefs.GetInt("Diamonds") + DiamondsToAdd);
         PlayerPrefs.Save();
 
+        CurrencyManager.Instance.StartCoroutine(ActivateCoinsChangeEffect(true, CoinsToAdd));
+        CurrencyManager.Instance.StartCoroutine(ActivateDiamondsChangeEffect(true, DiamondsToAdd));
+
         ResetRewardToAdd();
 
         CurrencyManager.Instance.OnCurrencyChange?.Invoke();
@@ -105,6 +119,9 @@ public class CurrencyManager : MonoBehaviour
         PlayerPrefs.SetInt("Diamonds", PlayerPrefs.GetInt("Diamonds") + DiamondsToAdd);
         PlayerPrefs.Save();
 
+        CurrencyManager.Instance.StartCoroutine(ActivateCoinsChangeEffect(true, CoinsToAdd));
+        CurrencyManager.Instance.StartCoroutine(ActivateDiamondsChangeEffect(true, DiamondsToAdd));
+
         ResetRewardToAdd();
 
         CurrencyManager.Instance.OnCurrencyChange?.Invoke();
@@ -115,12 +132,12 @@ public class CurrencyManager : MonoBehaviour
         if (PlayerPrefs.GetInt("Coins") - value >= 0)
         {
             PlayerPrefs.SetInt("Coins", PlayerPrefs.GetInt("Coins") - value);
+            CurrencyManager.Instance.StartCoroutine(ActivateCoinsChangeEffect(false, value));
             CurrencyManager.Instance.OnCurrencyChange?.Invoke();
         }
         else
         {
             StartCoroutine(ActivateNotEnoughCurrencyScreen());
-            Debug.Log("Not enough coins to buy");
         }
         
     }
@@ -129,12 +146,12 @@ public class CurrencyManager : MonoBehaviour
         if (PlayerPrefs.GetInt("Diamonds") - value >= 0)
         {
             PlayerPrefs.SetInt("Diamonds", PlayerPrefs.GetInt("Diamonds") - value);
+            CurrencyManager.Instance.StartCoroutine(ActivateDiamondsChangeEffect(false, value));
             CurrencyManager.Instance.OnCurrencyChange?.Invoke();
         }
         else
         {
             StartCoroutine(ActivateNotEnoughCurrencyScreen());
-            Debug.Log("Not enough diamonds to buy");
         }        
     }
 
@@ -147,7 +164,6 @@ public class CurrencyManager : MonoBehaviour
         else
         {
             StartCoroutine(ActivateNotEnoughCurrencyScreen());
-            Debug.Log("Not enough coins to buy");
             return false;
         }
 
@@ -161,7 +177,6 @@ public class CurrencyManager : MonoBehaviour
         else
         {
             StartCoroutine(ActivateNotEnoughCurrencyScreen());
-            Debug.Log("Not enough diamonds to buy");
             return false;
         }
     }
@@ -172,6 +187,44 @@ public class CurrencyManager : MonoBehaviour
         yield return new WaitForSeconds(NotEnoughCurrencyAlertAnimationClip.length);
 
         notEnoughCurrencyAlert.gameObject.SetActive(false);
+
+        yield return null;
+    }
+    IEnumerator ActivateCoinsChangeEffect(bool isPositive, int value)
+    {
+        if (isPositive)
+        {
+            CurrencyManager.Instance.coinsChangeEffectTMP.text = "+" + value.ToString();
+            CurrencyManager.Instance.coinsChangeEffectTMP.color = Color.green;
+        }
+        else
+        {
+            CurrencyManager.Instance.coinsChangeEffectTMP.text = "-" + value;
+            CurrencyManager.Instance.coinsChangeEffectTMP.color = Color.red;
+        }
+
+        CurrencyManager.Instance.coinsChangeEffect.gameObject.SetActive(true);
+        yield return new WaitForSeconds(CurrencyManager.Instance.coinsChangeEffectAnimationClip.length);
+        CurrencyManager.Instance.coinsChangeEffect.gameObject.SetActive(false);
+
+        yield return null;
+    }
+    IEnumerator ActivateDiamondsChangeEffect(bool isPositive, int value)
+    {
+        if (isPositive)
+        {
+            CurrencyManager.Instance.diamondsChangeEffectTMP.text = "+" + value.ToString();
+            CurrencyManager.Instance.diamondsChangeEffectTMP.color = Color.green;
+        }
+        else
+        {
+            CurrencyManager.Instance.diamondsChangeEffectTMP.text = "-" + value;
+            CurrencyManager.Instance.diamondsChangeEffectTMP.color = Color.red;
+        }
+
+        CurrencyManager.Instance.diamondsChangeEffect.gameObject.SetActive(true);
+        yield return new WaitForSeconds(CurrencyManager.Instance.diamondsChangeEffectAnimationClip.length);
+        CurrencyManager.Instance.diamondsChangeEffect.gameObject.SetActive(false);
 
         yield return null;
     }

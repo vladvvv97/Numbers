@@ -75,9 +75,10 @@ public class NumberCube : MonoBehaviour
                 
                 if (!GameManager.Instance.CubesToDestroy.Contains(this))
                 {
-                    GameManager.Instance.CubesToDestroy.Add(this);               
-                }
+                    GameManager.Instance.CubesToDestroy.Add(this);
 
+                }
+                GameObject vfx = Instantiate(GameManager.Instance.VFX, this.transform.position, Quaternion.identity, null);
                 Destroy(this.gameObject);
             }
         }

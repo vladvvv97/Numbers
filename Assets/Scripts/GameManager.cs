@@ -36,6 +36,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject twoNumberCubePrefab;
     [SerializeField] private GameObject threeNumberCubePrefab;
     [SerializeField] private GameObject[] cubeTypeChance;
+    [SerializeField] public GameObject VFX;
 
     private Transform _transform;
     private Vector3 _position;

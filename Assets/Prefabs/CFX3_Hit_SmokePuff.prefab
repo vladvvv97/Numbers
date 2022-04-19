@@ -12,7 +12,6 @@ GameObject:
   - component: {fileID: 19800000}
   - component: {fileID: 19900000}
   - component: {fileID: 11400000}
-  - component: {fileID: 1818109458593448520}
   - component: {fileID: 130478458007453814}
   m_Layer: 0
   m_Name: CFX3_Hit_SmokePuff
@@ -4718,18 +4717,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OnlyDeactivate: 0
---- !u!114 &1818109458593448520
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 100000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5e5cff985a993564c893dff27ab237cc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!210 &130478458007453814
 SortingGroup:
   m_ObjectHideFlags: 0

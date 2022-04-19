@@ -82,6 +82,8 @@ public class TouchController : MonoBehaviour
     }
     public void Swipe()
     {
+            AudioManager.Instance.Sounds.PlaySound(AudioManager.eAudioNames.Swipe);
+
             GameObject currentCube = GameManager.Instance.CurrentCube;
             AchievementConditionManager.Instance.InvokeOnSwipeAction();
             if (currentCube && !currentCube.gameObject.GetComponentInChildren<ThreeNumberCube>())

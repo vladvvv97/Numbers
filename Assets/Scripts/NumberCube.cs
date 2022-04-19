@@ -76,8 +76,8 @@ public class NumberCube : MonoBehaviour
                 if (!GameManager.Instance.CubesToDestroy.Contains(this))
                 {
                     GameManager.Instance.CubesToDestroy.Add(this);
-
                 }
+
                 GameObject vfx = Instantiate(GameManager.Instance.VFX, this.transform.position, Quaternion.identity, null);
                 Destroy(this.gameObject);
             }
@@ -89,6 +89,7 @@ public class NumberCube : MonoBehaviour
     {
         if (GameManager.Instance.CurrentCube)
         {
+            AudioManager.Instance.Sounds.PlaySound(AudioManager.eAudioNames.Collision);
             GameManager.Instance.SetSpeedEqualDropSpeed();
             GameManager.Instance.CurrentCube.transform.DetachChildren();
             Destroy(GameManager.Instance.CurrentCube);

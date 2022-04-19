@@ -26,6 +26,7 @@ public class GameOverZone : MonoBehaviour
             {
                 OnStayingInGameOverZone?.Invoke();
                 AlreadyChecked = true;
+                AudioManager.Instance.Sounds.PlaySound(AudioManager.eAudioNames.GameOver);
             }
     }
 

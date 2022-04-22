@@ -28,7 +28,10 @@ public class Speed : MonoBehaviour
             UpdateSlider();
         }
     }
-
+    public void ResetSpeed()
+    {
+        _time = 0;
+    }
     private void SpeedUp()
     {
         _time += Time.deltaTime;

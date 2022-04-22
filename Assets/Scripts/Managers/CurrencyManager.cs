@@ -16,6 +16,8 @@ public class CurrencyManager : MonoBehaviour
     [SerializeField] private int clearRowsCost;
     [SerializeField] private int coinsBaseAddedValue;
     [SerializeField] private int diamondsBaseAddedValue;
+    [SerializeField] private int minCoinsAddedValue;
+    [SerializeField] private int minDiamondsAddedValue;
     [SerializeField] private int rewardMultiplier;
     [SerializeField] private int scoreGap;                   // Интервал счета, после которого награда будет увеличиваться 
 
@@ -86,12 +88,18 @@ public class CurrencyManager : MonoBehaviour
     }
     public void AmountRewardCalculation(int rewardMult = 1)
     {
-        for (int i = 1; i <= 10; i++)
+        for (int i = 1; i <= 15; i++)
         {
             if (GameManager.Instance.Score >= scoreGap * i)
             {
                 CoinsToAdd += rewardMult * coinsBaseAddedValue;
                 DiamondsToAdd += rewardMult * diamondsBaseAddedValue;
+            }
+            else if (GameManager.Instance.Score < scoreGap)
+            {
+                CoinsToAdd = rewardMult * minCoinsAddedValue;
+                DiamondsToAdd = rewardMult * minDiamondsAddedValue;
+                return;
             }
         }
     }

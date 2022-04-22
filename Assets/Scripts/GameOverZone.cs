@@ -21,6 +21,7 @@ public class GameOverZone : MonoBehaviour
             && EnteredCube.ReadyToMerge                                  == true 
             && AlreadyChecked                                            == false 
             && GameManager.Instance.AllCubesReadyToMerge                 == true
+            && GameManager.Instance.CubesToDestroy.Contains(EnteredCube) == false // 19.04.2022 - Game Over even if Entered cube destroys
             && GameManager.Instance._timer > GameManager.Instance.WaitForReadyToMerge
             )
             {

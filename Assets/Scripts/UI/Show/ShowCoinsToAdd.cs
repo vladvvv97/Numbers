@@ -10,17 +10,11 @@ public class ShowCoinsToAdd : MonoBehaviour
     void Awake()
     {
         _coinsTMP = this.GetComponent<TextMeshProUGUI>();
-
-    }
-    void Start()
-    {
-        ShowCoinToAdd();
     }
     void OnEnable()
     {
         ShowCoinToAdd();
     }
-
     public void ShowCoinToAdd()
     {
         _coinsTMP.text = "+" + CurrencyManager.Instance.CoinsToAdd.ToString();

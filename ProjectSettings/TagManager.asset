@@ -4,8 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - Time
-  - FxTemporaire
+  - OneNumberCube
+  - TwoNumberCube
+  - ThreeNumberCube
   layers:
   - Default
   - TransparentFX

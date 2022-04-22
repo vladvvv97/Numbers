@@ -15,6 +15,7 @@ public class ContinueForCoins : MonoBehaviour
     [SerializeField] private Continue Continue;
     [SerializeField] private ClearRows ClearRows;
     [SerializeField] private GameObject gameOverUI;
+    [SerializeField] private Speed speed;
 
     private Button _button;
 
@@ -32,6 +33,7 @@ public class ContinueForCoins : MonoBehaviour
             _button.interactable = false;
             gameOverUI.gameObject.SetActive(false);
             Continue.ContinueGame();
+            speed.ResetSpeed();
         }
         else
         {

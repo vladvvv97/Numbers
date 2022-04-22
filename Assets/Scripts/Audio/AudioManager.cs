@@ -61,7 +61,6 @@ public class AudioManager : MonoBehaviour
     [System.Serializable]
     public class MusicManager
     {
-        [SerializeField] private eAudioNames initialOST;
         [SerializeField] private string musicManagerName;
         [SerializeField] private bool isMute = false;
         [SerializeField] private float musicVolume = 1f;
@@ -76,7 +75,6 @@ public class AudioManager : MonoBehaviour
         {
             audioSource.playOnAwake = true;
             audioSource.loop = true;
-            //PlayMusic(initialOST);
 
             if (PlayerPrefs.HasKey(IsMute))
             {
@@ -121,7 +119,9 @@ public class AudioManager : MonoBehaviour
             {
                 if (audioClip.name == audioName)
                 {
-                    audioSource.PlayOneShot(audioClip.audioClip);
+                    audioSource.clip = audioClip.audioClip;
+                    audioSource.loop = true;
+                    audioSource.Play();
                     return;
                 }
             }

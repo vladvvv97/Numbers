@@ -115,7 +115,7 @@ public class TaskConditionManager : MonoBehaviour
                 break;
 
             case 3:
-                ScoreCount = GameManager.Instance.Score >= 250 ? 1 : 0;
+                ScoreCount = GameManager.Instance.Score;
                 CurrentProgressValue(index, ScoreCount);
                 break;
 
@@ -170,23 +170,27 @@ public class TaskConditionManager : MonoBehaviour
         switch (index)
         {
             case 1:
-                isTask1Completed = false;
-                CurrentProgressValue(index, 0);
+                TaskConditionManager.Instance.isTask1Completed = false;
+                TaskConditionManager.Instance.isTaskRewardTaken(index, false);
+                TaskConditionManager.Instance.CurrentProgressValue(index, 0);
                 break;
 
             case 2:
-                isTask2Completed = false;
-                CurrentProgressValue(index, 0);
+                TaskConditionManager.Instance.isTask2Completed = false;
+                TaskConditionManager.Instance.isTaskRewardTaken(index, false);
+                TaskConditionManager.Instance.CurrentProgressValue(index, 0);
                 break;
 
             case 3:
-                isTask3Completed = false;
-                CurrentProgressValue(index, 0);
+                TaskConditionManager.Instance.isTask3Completed = false;
+                TaskConditionManager.Instance.isTaskRewardTaken(index, false);
+                TaskConditionManager.Instance.CurrentProgressValue(index, 0);
                 break;
 
             case 4:
-                isTask4Completed = false;
-                CurrentProgressValue(index, 0);
+                TaskConditionManager.Instance.isTask4Completed = false;
+                TaskConditionManager.Instance.isTaskRewardTaken(index, false);
+                TaskConditionManager.Instance.CurrentProgressValue(index, 0);
                 break;
 
             default:
@@ -195,21 +199,21 @@ public class TaskConditionManager : MonoBehaviour
     }
     public void ResetAllCompleteProgress()
     {
-        isTask1Completed = false;
-        isTaskRewardTaken(1, false);
-        CurrentProgressValue(1, 0);
+        TaskConditionManager.Instance.isTask1Completed = false;
+        TaskConditionManager.Instance.isTaskRewardTaken(1, false);
+        TaskConditionManager.Instance.CurrentProgressValue(1, 0);
 
-        isTask2Completed = false;
-        isTaskRewardTaken(2, false);
-        CurrentProgressValue(2, 0);
+        TaskConditionManager.Instance.isTask2Completed = false;
+        TaskConditionManager.Instance.isTaskRewardTaken(2, false);
+        TaskConditionManager.Instance.CurrentProgressValue(2, 0);
 
-        isTask3Completed = false;
-        isTaskRewardTaken(3, false);
-        CurrentProgressValue(3, 0);
+        TaskConditionManager.Instance.isTask3Completed = false;
+        TaskConditionManager.Instance.isTaskRewardTaken(3, false);
+        TaskConditionManager.Instance.CurrentProgressValue(3, 0);
 
-        isTask4Completed = false;
-        isTaskRewardTaken(4, false);
-        CurrentProgressValue(4, 0);       
+        TaskConditionManager.Instance.isTask4Completed = false;
+        TaskConditionManager.Instance.isTaskRewardTaken(4, false);
+        TaskConditionManager.Instance.CurrentProgressValue(4, 0);       
     }
 
     public bool IsTaskCompleted(int index)

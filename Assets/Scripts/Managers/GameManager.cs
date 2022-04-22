@@ -17,7 +17,7 @@ public class GameManager : MonoBehaviour
     public int[] CubeValueTypeChance =  new int[10] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
 
     [Header("Sets Dynamically, DON'T TOUCH")]
-    [HideInInspector]public int Score = 0;
+    public int Score = 0;
     [HideInInspector] public List<NumberCube> CubesToDestroy;
     [HideInInspector] public int CamHeight;
     [HideInInspector] public int CamWidth;
@@ -27,7 +27,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public bool ReadyToDropNewCube = true;
     [HideInInspector] public Vector3 MousePosition;
     [HideInInspector] public NumberCube[] AllCubesOnScene;
-    [HideInInspector] public GameObject CurrentCube;
+    public GameObject CurrentCube;
     [HideInInspector] public bool IsPaused = false;
     
     [Header("Drag'&'Drop In Inspector")]
@@ -40,8 +40,7 @@ public class GameManager : MonoBehaviour
 
     private Transform _transform;
     private Vector3 _position;
-    
-    private float _initialSpeed;    
+       
 
     void Awake()
     {
@@ -56,13 +55,11 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
+        Vibration.InitializeVibration();
         CamHeight = Mathf.RoundToInt(Camera.main.orthographicSize);
         CamWidth = Mathf.RoundToInt(CamHeight * Camera.main.aspect);
         Offset = oneNumberCubePrefab.transform.localScale.y / 2;
-        _initialSpeed = Speed;
-        
         InstantiateNumberCube();
-
     }
 
     void FixedUpdate() // Update -> Fixed Update 18.04.2022
@@ -71,7 +68,7 @@ public class GameManager : MonoBehaviour
 
         if (AllCubesReadyToMerge == true && IsPaused == false)
         {
-            _timer += Time.deltaTime;
+            _timer += Time.fixedDeltaTime;
 
             if (_timer >= DelayToDropNewCubeAfterCubesMerged)
             {
@@ -175,6 +172,7 @@ public class GameManager : MonoBehaviour
         int rnd = Random.Range(1, 3);
         if (rnd == 1) { AudioManager.Instance.Sounds.PlaySound(AudioManager.eAudioNames.DestroyFirst); }
         else if (rnd == 2) { AudioManager.Instance.Sounds.PlaySound(AudioManager.eAudioNames.DestroySecond); }
+        Vibration.Vibrate(25);
     }
 
     public int DropLine()

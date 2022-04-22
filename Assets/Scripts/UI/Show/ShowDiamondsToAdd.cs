@@ -10,11 +10,6 @@ public class ShowDiamondsToAdd : MonoBehaviour
     void Awake()
     {
         _diamondsTMP = this.GetComponent<TextMeshProUGUI>();
-
-    }
-    void Start()
-    {
-        ShowDiamondToAdd();
     }
     void OnEnable()
     {

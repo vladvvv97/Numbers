@@ -12,4 +12,7 @@ public class eNumSystem : MonoBehaviour
     public enum ePlayerPrefsAchievementProgress { AchievementCurrentProgressValue , AchievementEndingProgressValue }
     public enum ePlayerPrefsAchievementStatus { isAchievement1Completed, isAchievement2Completed, isAchievement3Completed, isAchievement4Completed, isAchievementRewardTaken }
     public enum eCurrencyType { Coin, Diamond, Skin }
+    public enum eVibrationStatus {VibrationStatus}
+    public enum eUserStatus { FirstTime }
+    public enum eTagName { OneNumberCube, TwoNumberCube, ThreeNumberCube }
 }

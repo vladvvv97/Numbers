@@ -74,3 +74,4 @@ MonoBehaviour:
   - {fileID: 2894800031981913652, guid: 95bd0ac4457d4674bbd65e69b7e12e21, type: 3}
   - {fileID: 2894800031981913652, guid: 95bd0ac4457d4674bbd65e69b7e12e21, type: 3}
   - {fileID: 2894800031981913652, guid: 95bd0ac4457d4674bbd65e69b7e12e21, type: 3}
+  VFX: {fileID: 100000, guid: 83cd9cc9f9c88824ba18dc59b05ae328, type: 3}

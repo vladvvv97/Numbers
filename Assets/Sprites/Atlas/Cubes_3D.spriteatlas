@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Cubes_3D
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: 5cbf1f710cde6fa46a87770c526432a0, type: 3}
+    - {fileID: 2800000, guid: 17218d41264b18442b5acf1781746583, type: 3}
+    - {fileID: 2800000, guid: 33f162294be7a614281a11b558fe93ee, type: 3}
+    - {fileID: 2800000, guid: dbee1a7cfef4b2348b8eac602f652d0d, type: 3}
+    - {fileID: 2800000, guid: 1b67aff92ad7f684ea48fe392d525b34, type: 3}
+    - {fileID: 2800000, guid: 76556886649bbca4dba5118f1c87ef9d, type: 3}
+    - {fileID: 2800000, guid: 65c9a5abf4e93b34a99b961d5935d92b, type: 3}
+    - {fileID: 2800000, guid: 7ddcabd716ecf9f41abe431e96a1f541, type: 3}
+    - {fileID: 2800000, guid: 37665eaa32c489b418e32756dc2b7c02, type: 3}
+    - {fileID: 2800000, guid: b50cbb18d991a4d47a1bc78dc269d425, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 17218d41264b18442b5acf1781746583, type: 3}
+  - {fileID: 21300000, guid: 5cbf1f710cde6fa46a87770c526432a0, type: 3}
+  - {fileID: 21300000, guid: 76556886649bbca4dba5118f1c87ef9d, type: 3}
+  - {fileID: 21300000, guid: 7ddcabd716ecf9f41abe431e96a1f541, type: 3}
+  - {fileID: 21300000, guid: b50cbb18d991a4d47a1bc78dc269d425, type: 3}
+  - {fileID: 21300000, guid: 33f162294be7a614281a11b558fe93ee, type: 3}
+  - {fileID: 21300000, guid: 1b67aff92ad7f684ea48fe392d525b34, type: 3}
+  - {fileID: 21300000, guid: 37665eaa32c489b418e32756dc2b7c02, type: 3}
+  - {fileID: 21300000, guid: 65c9a5abf4e93b34a99b961d5935d92b, type: 3}
+  - {fileID: 21300000, guid: dbee1a7cfef4b2348b8eac602f652d0d, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Cube2_DarkBlue
+  - Cube2_Black
+  - Cube2_LightBlue
+  - Cube2_Purple
+  - Cube2_Yellow
+  - Cube2_DarkPurple
+  - Cube2_Grey
+  - Cube2_Red
+  - Cube2_LightPurple
+  - Cube2_Green
+  m_RenderDataMap: {}
+  m_Tag: Cubes_3D
+  m_IsVariant: 0

@@ -10,6 +10,9 @@ scopes = {
 	"last_search.8788AF05" = "Script"
 	"OpenInspectorPreview.8788AF05" = "0"
 	"currentGroup.8788AF05" = "scene"
+	"last_search.7BEC51F9" = "Material"
+	"OpenInspectorPreview.7BEC51F9" = "0"
+	"currentGroup.7BEC51F9" = "all"
 }
 providers = {
 	adb = {
@@ -52,6 +55,31 @@ providers = {
 		priority = 50
 		defaultAction = null
 	}
+	menu = {
+		active = true
+		priority = 80
+		defaultAction = null
+	}
+	settings = {
+		active = true
+		priority = 100
+		defaultAction = null
+	}
+	help = {
+		active = true
+		priority = -1
+		defaultAction = null
+	}
+	calculator = {
+		active = true
+		priority = 10
+		defaultAction = null
+	}
+	static_methods = {
+		active = true
+		priority = 85
+		defaultAction = null
+	}
 }
 recentSearches = [
 	"Script"
@@ -59,9 +87,8 @@ recentSearches = [
 searchItemFavorites = [
 ]
 savedSearchesSortOrder = 0
-showSavedSearchPanel = false
-expandedQueries = [
-]
+showSavedSearchPanel = true
+expandedQueries = [-1765347274]
 queryBuilder = false
 ignoredProperties = "id;name;classname;imagecontentshash"
 helperWidgetCurrentArea = "all"

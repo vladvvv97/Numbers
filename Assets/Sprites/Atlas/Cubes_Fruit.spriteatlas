@@ -1,0 +1,76 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Cubes_Fruit
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 4
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: c67e5cee9cf2f4c4b80c78c1486bf887, type: 3}
+    - {fileID: 2800000, guid: bdbbc6b5e020f7c488fa78d23d436bc8, type: 3}
+    - {fileID: 2800000, guid: 22070a969cee43a4f832e5ac7ebb2375, type: 3}
+    - {fileID: 2800000, guid: 66eb353eb4a0b634a9fe2fde693b4e7b, type: 3}
+    - {fileID: 2800000, guid: 2b1c6d20a7a097a45b2cab8e98ec9a28, type: 3}
+    - {fileID: 2800000, guid: 40161b32a229a1048a14422799667321, type: 3}
+    - {fileID: 2800000, guid: fbf2f33390d8094449ea744c993a467c, type: 3}
+    - {fileID: 2800000, guid: b8a6bb16585fc474088ffb750522e7bc, type: 3}
+    - {fileID: 2800000, guid: edbdd8ca88d157b40acea1a407a68342, type: 3}
+    - {fileID: 2800000, guid: 9b435d35d7c31e64b8971feb32db0ba9, type: 3}
+    - {fileID: 2800000, guid: cb7d5db33e4413c4e939f1a3021e978a, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 2b1c6d20a7a097a45b2cab8e98ec9a28, type: 3}
+  - {fileID: 21300000, guid: 40161b32a229a1048a14422799667321, type: 3}
+  - {fileID: 21300000, guid: fbf2f33390d8094449ea744c993a467c, type: 3}
+  - {fileID: 21300000, guid: cb7d5db33e4413c4e939f1a3021e978a, type: 3}
+  - {fileID: 21300000, guid: 9b435d35d7c31e64b8971feb32db0ba9, type: 3}
+  - {fileID: 21300000, guid: bdbbc6b5e020f7c488fa78d23d436bc8, type: 3}
+  - {fileID: 21300000, guid: b8a6bb16585fc474088ffb750522e7bc, type: 3}
+  - {fileID: 21300000, guid: 22070a969cee43a4f832e5ac7ebb2375, type: 3}
+  - {fileID: 21300000, guid: edbdd8ca88d157b40acea1a407a68342, type: 3}
+  - {fileID: 21300000, guid: 66eb353eb4a0b634a9fe2fde693b4e7b, type: 3}
+  - {fileID: 21300000, guid: c67e5cee9cf2f4c4b80c78c1486bf887, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - Light_Blue
+  - Light_Purple
+  - Orange
+  - Yellow
+  - Watermelon
+  - Dark_Purple
+  - Purple
+  - Green
+  - Red
+  - Grey
+  - Dark_Blue
+  m_RenderDataMap: {}
+  m_Tag: Cubes_Fruit
+  m_IsVariant: 0

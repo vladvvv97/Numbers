@@ -9,7 +9,6 @@ public class ShowMultipliedCoinsToAdd : MonoBehaviour
     void Awake()
     {
         _coinsTMP = this.GetComponent<TextMeshProUGUI>();
-
     }
     void Start()
     {
@@ -19,7 +18,6 @@ public class ShowMultipliedCoinsToAdd : MonoBehaviour
     {
         ShowMultipliedCoinToAdd();
     }
-
     public void ShowMultipliedCoinToAdd()
     {
         var result = CurrencyManager.Instance.CoinsToAdd * CurrencyManager.Instance.RewardMultiplier;

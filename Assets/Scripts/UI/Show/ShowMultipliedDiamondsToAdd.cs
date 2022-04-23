@@ -9,7 +9,6 @@ public class ShowMultipliedDiamondsToAdd : MonoBehaviour
     void Awake()
     {
         _diamondsTMP = this.GetComponent<TextMeshProUGUI>();
-
     }
     void Start()
     {

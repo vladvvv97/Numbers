@@ -99,7 +99,6 @@ public class TaskConditionManager : MonoBehaviour
         OnVideoWatched += CheckTaskIncreaseProgress;
         OnVideoWatched += CheckTaskCompleteCondition;
     }
-
     public void CheckTaskIncreaseProgress(int index)
     {
         switch (index)

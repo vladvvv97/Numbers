@@ -1770,44 +1770,35 @@ MonoBehaviour:
       inWeight: 0
       outWeight: 0
     - serializedVersion: 3
-      time: 60
-      value: 0.75
-      inSlope: 0.00067502336
-      outSlope: 0.00067502336
-      tangentMode: 0
-      weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.22591439
-    - serializedVersion: 3
       time: 120
       value: 1
-      inSlope: 0.015091585
-      outSlope: 0.015091585
+      inSlope: 0.006512017
+      outSlope: 0.006512017
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.17987798
+      inWeight: 0.09756101
+      outWeight: 0.11432927
     - serializedVersion: 3
       time: 180
       value: 1.25
-      inSlope: 0.0010155969
-      outSlope: 0.0010155969
+      inSlope: -0.0010447793
+      outSlope: -0.0010447793
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
-      outWeight: 0.2779798
+      outWeight: 0.21951218
     - serializedVersion: 3
       time: 240
-      value: 2
-      inSlope: 0.013899252
-      outSlope: 0.013899252
+      value: 1.5
+      inSlope: 0.000025313599
+      outSlope: 0.000025313599
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
-      outWeight: 0.22256114
+      outWeight: 0.29268292
     - serializedVersion: 3
-      time: 300
-      value: 2.5
+      time: 360
+      value: 2.25
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -2197,14 +2188,6 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 1574941532}
     - target: {fileID: 595326489, guid: eb4772ab6da467d4b8369f3298be8d0d, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 595326489, guid: eb4772ab6da467d4b8369f3298be8d0d, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Mode
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 595326489, guid: eb4772ab6da467d4b8369f3298be8d0d, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[3].m_Target
       value: 
       objectReference: {fileID: 1281153272}
@@ -2212,22 +2195,6 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Target
       value: 
       objectReference: {fileID: 543686388}
-    - target: {fileID: 595326489, guid: eb4772ab6da467d4b8369f3298be8d0d, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_CallState
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 595326489, guid: eb4772ab6da467d4b8369f3298be8d0d, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_MethodName
-      value: ResetSpeed
-      objectReference: {fileID: 0}
-    - target: {fileID: 595326489, guid: eb4772ab6da467d4b8369f3298be8d0d, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_TargetAssemblyTypeName
-      value: Speed, Assembly-CSharp
-      objectReference: {fileID: 0}
-    - target: {fileID: 595326489, guid: eb4772ab6da467d4b8369f3298be8d0d, type: 3}
-      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[4].m_Arguments.m_ObjectArgumentAssemblyTypeName
-      value: UnityEngine.Object, UnityEngine
-      objectReference: {fileID: 0}
     - target: {fileID: 893752496, guid: eb4772ab6da467d4b8369f3298be8d0d, type: 3}
       propertyPath: speed
       value: 

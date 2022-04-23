@@ -132,9 +132,11 @@ public class TaskManager : MonoBehaviour
         }
         else
         {
+            TaskConditionManager.Instance.isTaskRewardTaken(rewardIndex, false); // 23.04.2022 [Bug Fix] "Wrong alert when day changes"
+
             if (TaskConditionManager.Instance.IsTaskCompleted(rewardIndex))
             {
-                MakeTaskCompletable();
+                MakeTaskCompletable();              
             }
             else
             {

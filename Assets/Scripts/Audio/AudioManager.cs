@@ -102,6 +102,10 @@ public class AudioManager : MonoBehaviour
             PlayerPrefs.SetString(IsMute, isMute.ToString());
             PlayerPrefs.Save();
         }
+        public void MuteMusic(bool value)
+        {
+            audioSource.mute = value;
+        }
 
         public void ChangeMusicVolume(Slider slider)
         {
@@ -129,6 +133,14 @@ public class AudioManager : MonoBehaviour
         public void StopMusic()
         {
             audioSource.Stop();
+        }
+        public void PauseMusic()
+        {
+            audioSource.Pause();
+        }
+        public void UnPauseMusic()
+        {
+            audioSource.UnPause();
         }
     }
 

@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     public float DropSpeed;
     public float _visibleTimeOfBacklights;
     public int[] CubeValueTypeChance =  new int[10] { 1, 2, 3, 4, 5, 6, 7, 8, 9, 10 };
+    public TouchController TouchController;
 
     [Header("Sets Dynamically, DON'T TOUCH")]
     public int Score = 0;
@@ -37,6 +38,7 @@ public class GameManager : MonoBehaviour
     [SerializeField] private GameObject threeNumberCubePrefab;
     [SerializeField] private GameObject[] cubeTypeChance;
     [SerializeField] public GameObject VFX;
+    
 
     private Transform _transform;
     private Vector3 _position;
@@ -52,6 +54,8 @@ public class GameManager : MonoBehaviour
         {
             Destroy(this.gameObject);
         }
+        Time.timeScale = 0;
+        IsPaused = true;
     }
     void Start()
     {

@@ -11,7 +11,7 @@ public class eNumSystem : MonoBehaviour
     public enum ePlayerPrefsAchievementConditions { AchievementLoginCount, SwipeCount, TopScoreCount, AchievementVideoWatchCount }
     public enum ePlayerPrefsAchievementProgress { AchievementCurrentProgressValue , AchievementEndingProgressValue }
     public enum ePlayerPrefsAchievementStatus { isAchievement1Completed, isAchievement2Completed, isAchievement3Completed, isAchievement4Completed, isAchievementRewardTaken }
-    public enum eCurrencyType { Coin, Diamond, Skin }
+    public enum eCurrencyType { Coin, Diamond, Skin, None }
     public enum eVibrationStatus {VibrationStatus}
     public enum eUserStatus { FirstTime }
     public enum eTagName { OneNumberCube, TwoNumberCube, ThreeNumberCube }

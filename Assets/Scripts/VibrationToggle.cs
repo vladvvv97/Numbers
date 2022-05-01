@@ -12,9 +12,25 @@ public class VibrationToggle : MonoBehaviour
         InitializeVibrationToggle();
     }
 
-    void OnEnable() => toggle.onValueChanged.AddListener(value => Vibration.isVibrationOn = value);
+    void OnEnable()
+    {
+        toggle.onValueChanged.AddListener(value => Vibration.isVibrationOn = value);
+        toggle.onValueChanged.AddListener(value => HandheldVibrate(value));
+    }
     private void OnDisable() => toggle.onValueChanged.RemoveAllListeners();
     private void OnDestroy() => toggle.onValueChanged.RemoveAllListeners();
+
+    private void HandheldVibrate(bool value)
+    {
+        if (value)
+        {
+            Handheld.Vibrate();
+        }
+        else
+        {
+            return;
+        }
+    }
 
     private void InitializeVibrationToggle()
     {

@@ -11,7 +11,8 @@ public class SkinsManager : MonoBehaviour
     public Sprite[] Cubes4;
     public Sprite[] InGameBackgrounds;
     public Sprite[] Backlights;
-    
+    public RuntimeAnimatorController[] MainMenuBackgrounds;
+
     void Awake()
     {
         if (SkinsManager.Instance == null)
@@ -42,6 +43,11 @@ public class SkinsManager : MonoBehaviour
         {
             PlayerPrefs.SetInt("CubeIndex", 0);
         }
+
+        if (!PlayerPrefs.HasKey("MainMenuBackgroundIndex"))
+        {
+            PlayerPrefs.SetInt("MainMenuBackgroundIndex", 0);
+        }
     }
 
     public void SetBacklightIndex(int index)
@@ -57,6 +63,11 @@ public class SkinsManager : MonoBehaviour
     public void SetCubeIndex(int index)
     {
         PlayerPrefs.SetInt("CubeIndex", index - 1);
+        PlayerPrefs.Save();
+    }
+    public void SetMainMenuBackgroundIndex(int index)
+    {
+        PlayerPrefs.SetInt("MainMenuBackgroundIndex", index - 1);
         PlayerPrefs.Save();
     }
 }

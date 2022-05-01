@@ -154,7 +154,7 @@ public class LockedElementActivateManager : MonoBehaviour
                 break;
 
             case eSkinType.MainMenuBackground:
-                SkinsManager.Instance.SetInGameBackgroundIndex(Int32.Parse(_index));
+                SkinsManager.Instance.SetMainMenuBackgroundIndex(Int32.Parse(_index));
                 break;
 
             case eSkinType.Backlight:

@@ -152,42 +152,36 @@ public class TouchController : MonoBehaviour
                         cubes[1].transform.position = new Vector2(x1, cubes[1].transform.position.y);
                         cubes[2].transform.position = new Vector2(x2, cubes[2].transform.position.y);
                         SwipeCounter++;
-                        Debug.Log("0");
                         break;
                     case 1:
                         cubes[0].transform.position = new Vector2(x0, cubes[0].transform.position.y);
                         cubes[1].transform.position = new Vector2(x2, cubes[1].transform.position.y);
                         cubes[2].transform.position = new Vector2(x1, cubes[2].transform.position.y);
                         SwipeCounter++;
-                        Debug.Log("1");
                         break;
                     case 2:
                         cubes[0].transform.position = new Vector2(x1, cubes[0].transform.position.y);
                         cubes[1].transform.position = new Vector2(x0, cubes[1].transform.position.y);
                         cubes[2].transform.position = new Vector2(x2, cubes[2].transform.position.y);
                         SwipeCounter++;
-                        Debug.Log("2");
                         break;
                     case 3:
                         cubes[0].transform.position = new Vector2(x1, cubes[0].transform.position.y);
                         cubes[1].transform.position = new Vector2(x2, cubes[1].transform.position.y);
                         cubes[2].transform.position = new Vector2(x0, cubes[2].transform.position.y);
                         SwipeCounter++;
-                        Debug.Log("3");
                         break;
                     case 4:
                         cubes[0].transform.position = new Vector2(x2, cubes[0].transform.position.y);
                         cubes[1].transform.position = new Vector2(x0, cubes[1].transform.position.y);
                         cubes[2].transform.position = new Vector2(x1, cubes[2].transform.position.y);
                         SwipeCounter++;
-                        Debug.Log("4");
                         break;
                     case 5:
                         cubes[0].transform.position = new Vector2(x2, cubes[0].transform.position.y);
                         cubes[1].transform.position = new Vector2(x1, cubes[1].transform.position.y);
                         cubes[2].transform.position = new Vector2(x0, cubes[2].transform.position.y);
                         SwipeCounter++;
-                        Debug.Log("5");
                         break;
 
                     default:

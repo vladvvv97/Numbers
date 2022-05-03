@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
+using YG;
 
 public class BestScore : MonoBehaviour
 {
@@ -21,8 +22,7 @@ public class BestScore : MonoBehaviour
         }
         else
         {
-            PlayerPrefs.SetInt("BestScore", 0);
-            _scoreTxt.text = ($"{PlayerPrefs.GetInt("BestScore")}");
+            _scoreTxt.text = ("0");
         }
     }
 
@@ -31,7 +31,6 @@ public class BestScore : MonoBehaviour
         if (GameManager.Instance.Score > PlayerPrefs.GetInt("BestScore"))
         {
             PlayerPrefs.SetInt("BestScore", GameManager.Instance.Score);
-            PlayerPrefs.Save();
             _scoreTxt.text = ($"{PlayerPrefs.GetInt("BestScore")}");
         }
     }

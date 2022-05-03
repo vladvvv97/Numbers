@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using YG;
 
 public class Tutorial : MonoBehaviour
 {
@@ -11,8 +12,8 @@ public class Tutorial : MonoBehaviour
     private bool isThreeNumberCubeSwipe;
     public bool isFirstTime
     {
-        get => PlayerPrefs.GetInt(eNumSystem.eUserStatus.FirstTime.ToString()) == 0 ? false : true;
-        set => PlayerPrefs.SetInt(eNumSystem.eUserStatus.FirstTime.ToString(), value == false ? 0 : 1);
+        get => YandexGame.savesData.isFirstSession;
+        set => YandexGame.savesData.isFirstSession = value;
     }
     void Start()
     {
@@ -50,7 +51,7 @@ public class Tutorial : MonoBehaviour
     }
     private void Initialize()
     {
-        if (PlayerPrefs.HasKey(eNumSystem.eUserStatus.FirstTime.ToString()))
+        if (!isFirstTime)
         {
             Debug.Log("Not First Time");
             Destroy(this.gameObject);

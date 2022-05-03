@@ -57,7 +57,6 @@ public class TouchController : MonoBehaviour
                     _alreadyTouch = true;
                     SwipeCounter = 1;
                     backlightLines.EnableBacklights();
-                    Vibration.Vibrate(25);
                 }
             }
         }
@@ -85,7 +84,6 @@ public class TouchController : MonoBehaviour
                         _alreadyTouch = true;
                         SwipeCounter = 1;
                         backlightLines.EnableBacklights();
-                        Vibration.Vibrate(25);
                     }
                 }
             }
@@ -105,8 +103,6 @@ public class TouchController : MonoBehaviour
         if (currentCube && currentCube.gameObject.GetComponentInChildren<TwoNumberCube>())
         {
             AudioManager.Instance.Sounds.PlaySound(AudioManager.eAudioNames.Swipe);
-            Vibration.Vibrate(35);
-            AchievementConditionManager.Instance.InvokeOnSwipeAction();
 
             NumberCube[] cubes = currentCube.GetComponentsInChildren<NumberCube>();
             float x1 = cubes[cubes.GetLowerBound(0)].transform.position.x;
@@ -119,8 +115,6 @@ public class TouchController : MonoBehaviour
         else if (currentCube && currentCube.gameObject.GetComponentInChildren<ThreeNumberCube>())
         {
             AudioManager.Instance.Sounds.PlaySound(AudioManager.eAudioNames.Swipe);
-            Vibration.Vibrate(35);
-            AchievementConditionManager.Instance.InvokeOnSwipeAction();
 
             NumberCube[] cubes = currentCube.GetComponentsInChildren<NumberCube>();
 

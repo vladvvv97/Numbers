@@ -6,12 +6,10 @@ public class GameOverUI : MonoBehaviour
 {
     void OnEnable()
     {
-        CurrencyManager.Instance.ResetRewardToAdd();
-        CurrencyManager.Instance.AmountRewardCalculation();
-        AudioManager.Instance.Music.MuteMusic(true);
+       // AudioManager.Instance.Music.MuteMusic(true);
     }
     void OnDisable()
     {
-        AudioManager.Instance.Music.MuteMusic(false);
+       // AudioManager.Instance.Music.MuteMusic(false);
     }
 }

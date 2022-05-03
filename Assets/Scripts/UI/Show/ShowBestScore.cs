@@ -19,8 +19,7 @@ public class ShowBestScore : MonoBehaviour
         }
         else
         {
-            PlayerPrefs.SetInt("BestScore", 0);
-            _scoreTxt.text = ($"{PlayerPrefs.GetInt("BestScore")}");
+            _scoreTxt.text = ("0");
         }
     }
 

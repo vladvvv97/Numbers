@@ -104,7 +104,14 @@ public class AudioManager : MonoBehaviour
         }
         public void MuteMusic(bool value)
         {
-            audioSource.mute = value;
+            if (System.Convert.ToBoolean(PlayerPrefs.GetString(IsMute)))
+            {
+                return;
+            }
+            else
+            {
+                audioSource.mute = value;
+            }          
         }
 
         public void ChangeMusicVolume(Slider slider)

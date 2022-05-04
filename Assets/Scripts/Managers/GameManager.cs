@@ -175,6 +175,8 @@ public class GameManager : MonoBehaviour
         int rnd = Random.Range(1, 3);
         if (rnd == 1) { AudioManager.Instance.Sounds.PlaySound(AudioManager.eAudioNames.DestroyFirst); }
         else if (rnd == 2) { AudioManager.Instance.Sounds.PlaySound(AudioManager.eAudioNames.DestroySecond); }
+
+        Vibration.Vibrate(20);
     }
 
     public int DropLine()

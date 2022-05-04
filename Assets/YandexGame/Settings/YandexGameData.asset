@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efa747916aa66674d96ea40ca8a480b2, type: 3}
   m_Name: YandexGameData
   m_EditorClassIdentifier: 
-  scopes: 1
+  scopes: 0
   playerPhotoSize: 0
-  leaderboardEnable: 1
+  leaderboardEnable: 0
   checkAdblock: 1
   LocalizationEnable: 1
   autolocationInspector: 1
@@ -60,4 +60,4 @@ MonoBehaviour:
     tk: {fileID: 0}
     uk: {fileID: 0}
     uz: {fileID: 0}
-  debug: 1
+  debug: 0

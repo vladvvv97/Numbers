@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using UnityEditor;
 using UnityEngine;
 
-public class TEST_DeletePlayerPrefs : EditorWindow
+public class TEST_DeletePlayerPrefs  //EditorWindow
 {
-    [MenuItem("Player Prefs/Delete All")]
+    //[MenuItem("Player Prefs/Delete All")]
     public static void DeletePlayerPrefs()
     {
         PlayerPrefs.DeleteAll();

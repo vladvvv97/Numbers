@@ -53,7 +53,6 @@ public class BacklightLines : MonoBehaviour
             GameManager.Instance.CubeControll();
             GameManager.Instance.SetSpeedEqualDropSpeed();
             AudioManager.Instance.Sounds.PlaySound(AudioManager.eAudioNames.Drop);
-        Vibration.Vibrate(20);
         Invoke(nameof(DisableBacklights), GameManager.Instance._visibleTimeOfBacklights);              
     }
     private void DisableBacklights()

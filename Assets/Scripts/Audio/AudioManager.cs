@@ -37,12 +37,12 @@ public class AudioManager : MonoBehaviour
         switch (next.buildIndex)
         {
             case 0:
-                AudioManager.Instance.Music.StopMusic();
+                //AudioManager.Instance.Music.StopMusic();
                 AudioManager.Instance.Music.PlayMusic(eAudioNames.MainMenuOST);
                 break;
 
             case 1:
-                AudioManager.Instance.Music.StopMusic();
+                //AudioManager.Instance.Music.StopMusic();
                 AudioManager.Instance.Music.PlayMusic(eAudioNames.InGameOST);
                 break;
 

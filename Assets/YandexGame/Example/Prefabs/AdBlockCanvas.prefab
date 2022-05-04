@@ -169,6 +169,7 @@ GameObject:
   - component: {fileID: 2372614989968819967}
   - component: {fileID: 5562182873304193235}
   - component: {fileID: 5362876010379282653}
+  - component: {fileID: 8417902600323869368}
   m_Layer: 5
   m_Name: Button
   m_TagString: Untagged
@@ -195,7 +196,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: -141}
-  m_SizeDelta: {x: 160, y: 30}
+  m_SizeDelta: {x: 300, y: 80}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &797417375812173401
 CanvasRenderer:
@@ -304,6 +305,30 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
+      - m_Target: {fileID: 8417902600323869368}
+        m_TargetAssemblyTypeName: TimeScale, Assembly-CSharp
+        m_MethodName: SetTimeScale
+        m_Mode: 4
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 1
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &8417902600323869368
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2432713116341827404}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf015eab72691104c8d8cf2de29e455f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &5078520532320362254
 GameObject:
   m_ObjectHideFlags: 0

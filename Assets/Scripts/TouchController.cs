@@ -98,7 +98,6 @@ public class TouchController : MonoBehaviour
     }
     public void Swipe()
     {
-        Vibration.Vibrate(25);
 
         GameObject currentCube = GameManager.Instance.CurrentCube; 
         

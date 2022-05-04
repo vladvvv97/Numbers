@@ -1,12 +1,12 @@
-﻿using UnityEngine;
+﻿using TMPro;
+using UnityEngine;
 using UnityEngine.UI;
 using YG;
 
 public class GetPlayerData : MonoBehaviour
 {
     [SerializeField] ImageLoadYG imageLoad;
-    [SerializeField] Text textPlayerData;
-    [SerializeField] Text textEnvirData;
+    [SerializeField] TextMeshProUGUI textPlayerData;
 
     private void OnEnable()
     {
@@ -27,22 +27,9 @@ public class GetPlayerData : MonoBehaviour
 
     void DebugData()
     {
-        textPlayerData.text = "playerName - " + YandexGame.playerName +
-            "\n\nplayerId - " + YandexGame.playerId +
-            "\n\nauth - " + YandexGame.auth +
-            "\nstartGame - " + YandexGame.startGame +
-            "\nadBlock - " + YandexGame.adBlock +
-            "\ninitializedLB - " + YandexGame.initializedLB +
-            "\nphotoSize - " + YandexGame.photoSize;
+        textPlayerData.text = YandexGame.playerName;
 
         if (imageLoad != null && YandexGame.auth)
             imageLoad.Load(YandexGame.playerPhoto);
-
-        textEnvirData.text = "domain - " + YandexGame.EnvironmentData.domain +
-            "\ndeviceType - " + YandexGame.EnvironmentData.deviceType +
-            "\nisMobile - " + YandexGame.EnvironmentData.isMobile +
-            "\nisDesktop - " + YandexGame.EnvironmentData.isDesktop +
-            "\nisTablet - " + YandexGame.EnvironmentData.isTablet +
-            "\nisTV - " + YandexGame.EnvironmentData.isTV;
     }
 }

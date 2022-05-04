@@ -89,7 +89,6 @@ public class NumberCube : MonoBehaviour
     {
         if (GameManager.Instance.CurrentCube)
         {
-            Vibration.Vibrate(new long[] { 0, 20, 600, 20 }) ;
             AudioManager.Instance.Sounds.PlaySound(AudioManager.eAudioNames.Collision);
             GameManager.Instance.SetSpeedEqualDropSpeed();
             GameManager.Instance.CurrentCube.transform.DetachChildren();

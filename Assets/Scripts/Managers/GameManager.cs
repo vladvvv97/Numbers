@@ -100,7 +100,7 @@ public class GameManager : MonoBehaviour
 
             foreach (var item in rb2d)
             {
-                item.velocity = new Vector2(0, -DropSpeed);
+                item.linearVelocity = new Vector2(0, -DropSpeed);
             }
         }
     }

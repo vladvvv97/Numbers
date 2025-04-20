@@ -27,7 +27,7 @@ public class NumberCube : MonoBehaviour
     {
         _rb2d.sleepMode = RigidbodySleepMode2D.NeverSleep;
         _rb2d.gravityScale = 0;
-        _rb2d.velocity = new Vector2(0, -GameManager.Instance.Speed);
+        _rb2d.linearVelocity = new Vector2(0, -GameManager.Instance.Speed);
 
         Value = GameManager.Instance.CubeValueTypeChance[Random.Range(0, GameManager.Instance.CubeValueTypeChance.Length)];
 
@@ -57,7 +57,7 @@ public class NumberCube : MonoBehaviour
 
     protected virtual void Update()
     {
-        if (_rb2d.velocity.y < -0.01f)
+        if (_rb2d.linearVelocity.y < -0.01f)
         {
             ReadyToMerge = false;          
         }

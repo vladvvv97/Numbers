@@ -3,52 +3,57 @@ using System.Collections;
 using UnityEngine.UI;
 using UnityEngine.Advertisements;
 using UnityEngine.SceneManagement;
+using YG;
 
-public class RewardedAds : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListener
+public class RewardedAds : MonoBehaviour//, IUnityAdsLoadListener, IUnityAdsShowListener
 {
     [SerializeField] private eNumSystem.eCurrencyType rewardType;
     [SerializeField] private int rewardValue;
 
-    [SerializeField] private string _androidAdUnitId = "Rewarded_Android";
-    [SerializeField] private string _iOSAdUnitId = "Rewarded_iOS";
+   // [SerializeField] private string _androidAdUnitId = "Rewarded_Android";
+    //[SerializeField] private string _iOSAdUnitId = "Rewarded_iOS";
 
     private string _adUnitId;
+    private string rewardID;
 
     void Awake()
     {
-        InitializePlatform();
+       // InitializePlatform();
     }
     void Start()
     {
-        InitializeRewardedAd();
+       // InitializeRewardedAd();
     }
 
-    private void InitializePlatform() => _adUnitId = (Application.platform == RuntimePlatform.IPhonePlayer) ? _iOSAdUnitId : _androidAdUnitId;
+  //  private void InitializePlatform() => _adUnitId = (Application.platform == RuntimePlatform.IPhonePlayer) ? _iOSAdUnitId : _androidAdUnitId;
 
     private void InitializeRewardedAd()
     {
-        StartCoroutine(LoadAdRewarded());
+       // StartCoroutine(LoadAdRewarded());
     }
-    private IEnumerator LoadAdRewarded()
-    {
-        yield return new WaitForSeconds(1f);
-        LoadAd();
-    }
+    //private IEnumerator LoadAdRewarded()
+   // {
+       // yield return new WaitForSeconds(1f);
+       // LoadAd();
+    //}
 
     public void LoadAd()
     {
-        Debug.Log("Loading Ad: " + _adUnitId);
-        Advertisement.Load(_adUnitId, this);
+        //Debug.Log("Loading Ad: " + _adUnitId);
+        //Advertisement.Load(_adUnitId, this);
     }
     public void OnUnityAdsAdLoaded(string adUnitId)
     {
-        Debug.Log("Ad Loaded: " + adUnitId);
+        //Debug.Log("Ad Loaded: " + adUnitId);
     }
     public void ShowAd()
     {
-        Advertisement.Show(_adUnitId, this);
+        //Advertisement.Show(_adUnitId, this);
+        YG2.RewardedAdvShow(rewardID);
+        AchievementConditionManager.Instance.InvokeOnAchievementVideoWatchedAction();
+        TaskConditionManager.Instance.InvokeOnVideoWatchedAction();
     }
-    public void OnUnityAdsShowComplete(string adUnitId, UnityAdsShowCompletionState showCompletionState)
+    /*public void OnUnityAdsShowComplete(string adUnitId, UnityAdsShowCompletionState showCompletionState)
     {
         if (adUnitId.Equals(_adUnitId) && showCompletionState.Equals(UnityAdsShowCompletionState.COMPLETED))
         {
@@ -92,5 +97,5 @@ public class RewardedAds : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowLi
         }
     }
     public void OnUnityAdsShowClick(string adUnitId) { }
-
+    */
 }

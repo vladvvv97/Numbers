@@ -1,14 +1,15 @@
-using System;
+﻿using System;
 using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using YG;
 
 public class AchievementManager : MonoBehaviour
 {
     [Header("Set in Inspector")]
-    [SerializeField] [Tooltip("No./#/� Achievements in descending order")][Range(1,4)] private int rewardIndex;   
+    [SerializeField] [Tooltip("No./#/№ Achievements in descending order")][Range(1,4)] private int rewardIndex;   
     [SerializeField] private int rewardValue;
     [SerializeField] private Color rewardValueTextColor;
     [SerializeField] private eNumSystem.eCurrencyType rewardType;
@@ -149,8 +150,11 @@ public class AchievementManager : MonoBehaviour
         claimText.gameObject.SetActive(false);
 
         achievementConditionSlider.value = 1;
-        achievementConditionProgressText.text = achievementConditionProgressCompleteText;
 
+        if (YG2.lang == "ru") { achievementConditionProgressText.text = "Разблокировано!"; }
+        else if (YG2.lang == "tr") { achievementConditionProgressText.text = "Kilidi açıldı!"; }
+        else { achievementConditionProgressText.text = achievementConditionProgressCompleteText; }
+        
         skinCostValueText.text = achievementConditionProgressCompleteText;
         skinCostValueText.color = Color.green;
     }

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using YG;
 
 public class TaskManager : MonoBehaviour
 {
@@ -165,7 +166,9 @@ public class TaskManager : MonoBehaviour
         claimCheckmark.gameObject.SetActive(true);
         claimText.gameObject.SetActive(false);
         taskConditionSlider.value = 1;
-        taskConditionProgressText.text = taskConditionProgressCompleteText;
+        if (YG2.lang == "ru") { taskConditionProgressText.text = "Выполнено!"; }
+        else if (YG2.lang == "tr") { taskConditionProgressText.text = "Tamamlamak!"; }
+        else { taskConditionProgressText.text = taskConditionProgressCompleteText; }
     }
 
     public void MakeTaskUncompleted()

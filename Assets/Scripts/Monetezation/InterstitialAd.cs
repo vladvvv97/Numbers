@@ -1,31 +1,32 @@
 using UnityEngine;
 using UnityEngine.Advertisements;
 using UnityEngine.SceneManagement;
+using YG;
 
-public class InterstitialAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsShowListener
+public class InterstitialAd : MonoBehaviour//, IUnityAdsLoadListener, IUnityAdsShowListener
 {
-    [SerializeField] private string _androidAdUnitId = "Interstitial_Android";
-    [SerializeField] private string _iOSAdUnitId = "Interstitial_iOS";
+    //[SerializeField] private string _androidAdUnitId = "Interstitial_Android";
+    //[SerializeField] private string _iOSAdUnitId = "Interstitial_iOS";
 
-    private string _adUnitId;
+    //private string _adUnitId;
     void Awake()
     {
-        InitializePlatform();      
+       // InitializePlatform();      
     }
     void Start()
     {
         InitializeInterstitialAd();
     }
 
-    private void InitializePlatform() => _adUnitId = (Application.platform == RuntimePlatform.IPhonePlayer) ? _iOSAdUnitId : _androidAdUnitId;
+    //private void InitializePlatform() => _adUnitId = (Application.platform == RuntimePlatform.IPhonePlayer) ? _iOSAdUnitId : _androidAdUnitId;
 
     private void InitializeInterstitialAd() => LoadAd();
 
     public void LoadAd()
     {
         // IMPORTANT! Only load content AFTER initialization (in this example, initialization is handled in a different script).
-        Debug.Log("Loading Ad: " + _adUnitId);
-        Advertisement.Load(_adUnitId, this);
+        //Debug.Log("Loading Ad: " + _adUnitId);
+        //Advertisement.Load(_adUnitId, this);
     }
 
     // Show the loaded content in the Ad Unit: 
@@ -35,22 +36,24 @@ public class InterstitialAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsSho
      
         int rnd = Random.Range(0, 101);
 
-        Debug.Log("Showing Ad: " + _adUnitId);
+        //Debug.Log("Showing Ad: " + _adUnitId);
         Debug.Log("RND = " + rnd);
         Debug.Log("Chance = " + chanceValue);
-
+        if (GameManager.Instance) { GameManager.Instance.TouchController.gameObject.SetActive(true); }
         if (rnd <= chanceValue)
         {
-            Advertisement.Show(_adUnitId, this);
+            //Advertisement.Show(_adUnitId, this);
+            YG2.InterstitialAdvShow();
         }
         else
         {
             return;
-        }       
+        }      
     }
 
+
     // Implement Load Listener and Show Listener interface methods:  
-    public void OnUnityAdsAdLoaded(string placementId)
+   /* public void OnUnityAdsAdLoaded(string placementId)
     {
         // Optionally execute code if the Ad Unit successfully loads content.
     }
@@ -96,5 +99,5 @@ public class InterstitialAd : MonoBehaviour, IUnityAdsLoadListener, IUnityAdsSho
         }
         AudioManager.Instance.Music.MuteMusic(false);
         Advertisement.Load(_adUnitId, this);
-    }
+    }*/
 }

@@ -167,7 +167,7 @@ namespace YG
         }
 
         public static void PauseGame(bool pause, bool editTimeScale, bool editAudioPause, bool editCursor, bool editEventSystem)
-        {
+        {            
             if (pause == pauseGame)
                 return;
 

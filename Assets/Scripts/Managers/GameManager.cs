@@ -59,7 +59,6 @@ public class GameManager : MonoBehaviour
     }
     void Start()
     {
-        Vibration.InitializeVibration();
         CamHeight = Mathf.RoundToInt(Camera.main.orthographicSize);
         CamWidth = Mathf.RoundToInt(CamHeight * Camera.main.aspect);
         Offset = oneNumberCubePrefab.transform.localScale.y / 2;
@@ -176,7 +175,6 @@ public class GameManager : MonoBehaviour
         int rnd = Random.Range(1, 3);
         if (rnd == 1) { AudioManager.Instance.Sounds.PlaySound(AudioManager.eAudioNames.DestroyFirst); }
         else if (rnd == 2) { AudioManager.Instance.Sounds.PlaySound(AudioManager.eAudioNames.DestroySecond); }
-        Vibration.Vibrate(25);
     }
 
     public int DropLine()

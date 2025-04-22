@@ -34,6 +34,7 @@ public class AudioManager : MonoBehaviour
 
     private void OnActiveSceneChanged(Scene current, Scene next)
     {
+        
         switch (next.buildIndex)
         {
             case 0:
